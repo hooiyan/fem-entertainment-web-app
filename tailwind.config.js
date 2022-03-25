@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'app-pure-white': 'hsl(0, 0%, 100%)',
-        'app-red': 'hsl(0, 97%, 63%)',
-        'app-dark-blue': 'hsl(223, 30%, 9%)',
-        'app-semi-dark-blue': 'hsl(223, 36%, 14%)',
-        'app-greyish-blue': 'hsl(223, 23%, 46%)',
+        'app-pure-white': 'hsl(0, 0%, 100%)', // #FFFFFF
+        'app-red': 'hsl(0, 97%, 63%)', // #FC4747
+        'app-dark-blue': 'hsl(223, 30%, 9%)', // #10141E
+        'app-semi-dark-blue': 'hsl(223, 36%, 14%)', // #161D2F
+        'app-greyish-blue': 'hsl(223, 23%, 46%)', // #5A698F
       },
       fontFamily: {
         sans: ['Outfit', ...defaultTheme.fontFamily.sans],

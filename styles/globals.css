@@ -26,4 +26,12 @@
   .body-sm {
     @apply text-app-body-sm font-light;
   }
+
+  .icon-nav {
+    @apply fill-app-greyish-blue hover:fill-app-red transition duration-150 ease-in-out;
+  }
+
+  .active-link {
+    @apply fill-app-pure-white hover:fill-app-red transition duration-150 ease-in-out;
+  }
 }
