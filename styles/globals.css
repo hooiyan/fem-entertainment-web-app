@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .heading-lg {
+    @apply text-app-heading-lg font-light;
+  }
+
+  .heading-md {
+    @apply text-app-heading-md font-light;
+  }
+
+  .heading-sm {
+    @apply text-app-heading-md font-medium;
+  }
+
+  .heading-xs {
+    @apply text-app-heading-xs font-medium;
+  }
+
+  .body-md {
+    @apply text-app-body-md font-light;
+  }
+
+  .body-sm {
+    @apply text-app-body-sm font-light;
+  }
+}
