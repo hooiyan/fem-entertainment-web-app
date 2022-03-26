@@ -1,13 +1,15 @@
-import { FiSearch } from 'react-icons/fi'
+import IconSearch from './icons/IconSearch'
 
-export default function SearchBar() {
+export default function SearchBar({
+  placeholder = 'Search for movies or TV series',
+}) {
   return (
     <form className="flex pb-6">
-      <FiSearch className="h-[18px] w-[18px] mt-1" />
+      <IconSearch className="h-6 w-6" />
       <input
-        className="bg-app-dark-blue caret-app-red pb-[8px] ml-4 border-b border-app-dark-blue text-base placeholder:text-app-greyish-blue placeholder:text-app-body-md focus:outline-none focus:border-b focus:border-app-greyish-blue"
+        className="bg-app-dark-blue caret-app-red pb-[8px] ml-4 border-b border-app-dark-blue text-base font-light placeholder:text-app-placeholder placeholder:text-base focus:outline-none focus:border-b focus:border-app-greyish-blue"
         type="text"
-        placeholder="Search for movies or TV series"
+        placeholder={placeholder}
       />
     </form>
   )

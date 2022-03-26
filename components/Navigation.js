@@ -1,32 +1,33 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import AppLogo from '../assets/logo.svg'
-
-import IconBookmark from './icons/IconNavBookmark'
-import IconHome from './icons/IconNavHome'
-import IconMovie from './icons/IconNavMovie'
-import IconTv from './icons/IconNavTv'
+import AppLogo from './icons/AppIcon'
+import IconNavBookmark from './icons/IconNavBookmark'
+import IconNavHome from './icons/IconNavHome'
+import IconNavMovie from './icons/IconNavMovie'
+import IconNavTv from './icons/IconNavTv'
 import NavigationIcon from './NavigationIcon'
 
 export default function Navigation() {
   return (
     <nav className="bg-app-semi-dark-blue flex items-center justify-between p-5">
       <Link href="/" passHref>
-        <Image src={AppLogo} alt="app logo" height={20} width={25} />
+        <span>
+          <AppLogo />
+        </span>
       </Link>
-      <ul className="flex justify-between w-1/2">
+      <ul className="flex items-center justify-between w-2/5">
         <NavigationIcon href="/">
-          <IconHome />
+          <IconNavHome />
         </NavigationIcon>
         <NavigationIcon href="/movie">
-          <IconMovie />
+          <IconNavMovie />
         </NavigationIcon>
         <NavigationIcon href="/tv">
-          <IconTv />
+          <IconNavTv />
         </NavigationIcon>
         <NavigationIcon href="/bookmark">
-          <IconBookmark />
+          <IconNavBookmark />
         </NavigationIcon>
       </ul>
       <div className="flex items-center justify-center rounded-full bg-app-pure-white p-px">

@@ -27,6 +27,10 @@
     @apply text-app-body-sm font-light;
   }
 
+  .section-title {
+    @apply text-xl font-light mb-6;
+  }
+
   .icon-nav {
     @apply fill-app-greyish-blue hover:fill-app-red transition duration-150 ease-in-out;
   }

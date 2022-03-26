@@ -1,3 +1,17 @@
+import Card from '../components/Card'
+import SearchBar from '../components/SearchBar'
+
 export default function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  return (
+    <>
+      <SearchBar />
+      <section>
+        <h2 className="section-title">Trending</h2>
+      </section>
+      <section>
+        <h2 className="section-title">Recommended for you</h2>
+        <Card />
+      </section>
+    </>
+  )
 }
