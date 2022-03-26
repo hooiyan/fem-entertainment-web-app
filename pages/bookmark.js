@@ -5,7 +5,10 @@ export default function bookmark() {
     <>
       <SearchBar placeholder="Search for bookmarked shows" />
       <section>
-        <h2 className="section-title">Bookmarked shows</h2>
+        <h2 className="section-title">Bookmarked Movies</h2>
+      </section>
+      <section>
+        <h2 className="section-title">Bookmarked TV Series</h2>
       </section>
     </>
   )

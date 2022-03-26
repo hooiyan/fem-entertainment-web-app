@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-app-dark-blue;
+  }
+}
+
 @layer components {
   .heading-lg {
     @apply text-app-heading-lg font-light;
@@ -31,11 +37,82 @@
     @apply text-xl font-light mb-6;
   }
 
+  .app-transition {
+    @apply transition duration-300 ease-linear;
+  }
+
+  .nav-hover-effect {
+    @apply hover:fill-app-red hover:app-transition;
+  }
+
   .icon-nav {
-    @apply fill-app-greyish-blue hover:fill-app-red transition duration-150 ease-in-out;
+    @apply fill-app-greyish-blue nav-hover-effect;
   }
 
   .active-link {
-    @apply fill-app-pure-white hover:fill-app-red transition duration-150 ease-in-out;
+    @apply fill-app-pure-white nav-hover-effect;
+  }
+
+  .card-normal-collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+    column-gap: 7.5px;
+    row-gap: 15px;
+  }
+
+  .card-normal-collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+    column-gap: 7.5px;
+    row-gap: 15px;
+  }
+
+  /* Normal */
+
+  .card-normal-info {
+    @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
+  }
+
+  .card-normal-info-3in1 {
+    @apply flex items-center px-[6px] before:content-['•'] after:content-['•'];
+  }
+
+  .card-normal-info-category {
+    @apply pl-1 pr-1;
+  }
+
+  .card-normal-image {
+    @apply rounded-lg relative w-[164px];
+  }
+
+  /* Trending */
+
+  .card-trending-full-info {
+    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate;
+  }
+
+  .card-trending-info {
+    @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
+  }
+
+  .card-trending-info-3in1 {
+    @apply flex items-center px-[8px] before:content-['•'] after:content-['•'];
+  }
+
+  .card-trending-info-category {
+    @apply pl-[6px] pr-[6px];
+  }
+
+  .card-trending-image {
+    @apply rounded-lg relative w-[240px];
+  }
+
+  .h-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .h-scroll::-webkit-scrollbar {
+    display: none;
   }
 }
