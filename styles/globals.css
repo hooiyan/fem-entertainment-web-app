@@ -60,53 +60,53 @@
     row-gap: 15px;
   }
 
-  .card-normal-collection {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
-    column-gap: 7.5px;
-    row-gap: 15px;
-  }
-
-  /* Normal */
-
-  .card-normal-info {
+  /* Wrapper for (year, category, rating) */
+  .card-info-first-line {
     @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
   }
-
-  .card-normal-info-3in1 {
-    @apply flex items-center px-[6px] before:content-['•'] after:content-['•'];
+  .card-info-first-line-normal {
+    @apply card-info-first-line;
+  }
+  .card-info-first-line-trending {
+    @apply card-info-first-line;
   }
 
-  .card-normal-info-category {
+  /* Category wrapper (Category icon & Category text) */
+  .card-info-category-2in1 {
+    @apply flex items-center before:content-['•'] after:content-['•'];
+  }
+  .card-info-category-2in1-normal {
+    @apply card-info-category-2in1 px-[6px];
+  }
+  .card-info-category-2in1-trending {
+    @apply card-info-category-2in1 px-[8px];
+  }
+
+  /* Category text (movie or tv series) */
+  .card-info-category-text-normal {
     @apply pl-1 pr-1;
   }
-
-  .card-normal-image {
-    @apply rounded-lg relative w-[164px];
-  }
-
-  /* Trending */
-
-  .card-trending-full-info {
-    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate;
-  }
-
-  .card-trending-info {
-    @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
-  }
-
-  .card-trending-info-3in1 {
-    @apply flex items-center px-[8px] before:content-['•'] after:content-['•'];
-  }
-
-  .card-trending-info-category {
+  .card-info-category-text-trending {
     @apply pl-[6px] pr-[6px];
   }
 
-  .card-trending-image {
-    @apply rounded-lg relative w-[240px];
+  /* Thumbnail image wrapper */
+  .card-image {
+    @apply rounded-lg relative;
+  }
+  .card-image-normal {
+    @apply card-image w-[164px];
+  }
+  .card-image-trending {
+    @apply card-image w-[240px];
   }
 
+  /* The whole information wrapper (year, category, rating, title) */
+  .card-info-wrapper-trending {
+    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate;
+  }
+
+  /* The horizontal scroll for trending section */
   .h-scroll {
     -ms-overflow-style: none;
     scrollbar-width: none;
