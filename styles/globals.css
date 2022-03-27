@@ -68,7 +68,7 @@
     @apply card-info-first-line;
   }
   .card-info-first-line-trending {
-    @apply card-info-first-line;
+    @apply card-info-first-line text-app-pure-white font-medium;
   }
 
   /* Category wrapper (Category icon & Category text) */
@@ -101,9 +101,14 @@
     @apply card-image w-[240px];
   }
 
+  /* Overlay for trending card image */
+  .overlay {
+    @apply after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50;
+  }
+
   /* The whole information wrapper (year, category, rating, title) */
   .card-info-wrapper-trending {
-    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate;
+    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate z-50;
   }
 
   /* The horizontal scroll for trending section */
