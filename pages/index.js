@@ -52,8 +52,6 @@ export default function Home() {
     )
   })
 
-  const testingResult = renderResults(data, <CardTrending />)
-
   return (
     <>
       <SearchBar />
