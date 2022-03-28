@@ -7,8 +7,8 @@ const fetcher = url => fetch(url).then(res => res.json())
 const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
 
 export default function Home() {
-  // const { data, error } = useSWR('/api/trending', fetcher)
-  const { data, error } = useSWR('/api/upcoming', fetcher)
+  const { data, error } = useSWR('/api/trending', fetcher)
+  // const { data, error } = useSWR('/api/upcoming', fetcher)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading trending...</div>
@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <>
       <SearchBar />
-      <section className="overflow-hidden w-full h-full mb-6">
+      <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible">
         <h2 className="section-title">Trending</h2>
         <section className="h-scroll flex relative overflow-x-scroll">
           {trendingResults}
@@ -64,6 +64,7 @@ export default function Home() {
       <section>
         <h2 className="section-title">Upcoming</h2>
         <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between">
+          {upcomingResults}
           {upcomingResults}
         </section>
       </section>

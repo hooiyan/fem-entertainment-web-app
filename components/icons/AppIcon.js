@@ -1,7 +1,7 @@
 export default function AppIcon() {
   return (
     <svg
-      className="h-[20px] w-[25px]"
+      className="w-[25px] h-[20px] lg:w-[32px] lg:h-[25.6px]"
       width="1em"
       height="1em"
       viewBox="0 0 33 27"

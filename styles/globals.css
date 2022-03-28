@@ -46,11 +46,11 @@
   }
 
   .icon-nav {
-    @apply fill-app-greyish-blue nav-hover-effect;
+    @apply fill-app-greyish-blue nav-hover-effect md:w-5 md:h-5;
   }
 
   .active-link {
-    @apply fill-app-pure-white nav-hover-effect;
+    @apply fill-app-pure-white nav-hover-effect md:w-5 md:h-5;
   }
 
   /* .card-normal-collection {
@@ -117,7 +117,7 @@
     @apply w-full;
   }
   .single-card-wrapper-normal {
-    @apply single-card-wrapper mb-4 last:mb-0 basis-1/5 grow 2xs:m-2;
+    @apply single-card-wrapper mb-4 basis-1/5 grow 2xs:m-2;
   }
   .single-card-wrapper-trending {
     @apply single-card-wrapper relative mr-4 last:mr-0 2xs:m-1;
@@ -130,7 +130,7 @@
 
   /* The whole information wrapper (year, category, rating, title) */
   .card-info-wrapper-trending {
-    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate z-50;
+    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate z-40;
   }
 
   /* The horizontal scroll for trending section */
