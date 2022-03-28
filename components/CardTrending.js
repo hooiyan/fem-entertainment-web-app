@@ -3,7 +3,7 @@ import CardInfo from './CardInfo'
 
 export default function CardTrending({ category, rating, src, title, year }) {
   return (
-    <div className="relative mr-4 last:mr-0">
+    <div className="single-card-wrapper-trending">
       <CardImage isTrending src={src} />
       <CardInfo
         isTrending

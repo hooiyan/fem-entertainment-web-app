@@ -4,6 +4,7 @@ import CardTrending from '../components/CardTrending'
 import SearchBar from '../components/SearchBar'
 
 const fetcher = url => fetch(url).then(res => res.json())
+const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
 
 export default function Home() {
   // const { data, error } = useSWR('/api/trending', fetcher)
@@ -18,8 +19,12 @@ export default function Home() {
         key={item.id}
         // category={item.media_type}
         rating={item.adult}
-        src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-        // title={item.original_name || item.original_title}
+        // src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
+        src={
+          item.backdrop_path
+            ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
+            : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
+        }
         title={
           item.title ? item.title : item.original_name || item.original_title
         }
@@ -34,8 +39,11 @@ export default function Home() {
         key={item.id}
         category={item.media_type}
         rating={item.adult}
-        src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-        // title={item.original_name || item.original_title}
+        src={
+          item.backdrop_path
+            ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
+            : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
+        }
         title={
           item.title ? item.title : item.original_name || item.original_title
         }
@@ -54,8 +62,10 @@ export default function Home() {
         </section>
       </section>
       <section>
-        <h2 className="section-title">Recommended for you</h2>
-        <section className="card-normal-collection">{upcomingResults}</section>
+        <h2 className="section-title">Upcoming</h2>
+        <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between">
+          {upcomingResults}
+        </section>
       </section>
     </>
   )

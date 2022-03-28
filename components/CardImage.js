@@ -5,13 +5,18 @@ import IconBookmarkEmpty from './icons/IconBookmarkEmpty'
 export default function CardImage({ isTrending, src, title }) {
   return (
     <div className={isTrending ? 'card-image-trending' : 'card-image-normal'}>
-      <div className={isTrending ? 'overlay' : null}>
+      <div
+        className={
+          isTrending
+            ? 'overlay-after image-wrapper-trending'
+            : 'image-wrapper-normal'
+        }>
         <Image
-          className="rounded-lg relative"
+          className="rounded-lg"
           src={src}
           alt={title}
-          width={240}
-          height={140}
+          layout="fill"
+          objectFit="cover"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)

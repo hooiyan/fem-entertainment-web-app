@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-app-dark-blue;
+    @apply bg-app-dark-blue max-w-[1440px] mx-auto;
   }
 }
 
@@ -53,12 +53,12 @@
     @apply fill-app-pure-white nav-hover-effect;
   }
 
-  .card-normal-collection {
+  /* .card-normal-collection {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: 7.5px;
     row-gap: 15px;
-  }
+  } */
 
   /* Wrapper for (year, category, rating) */
   .card-info-first-line {
@@ -68,7 +68,7 @@
     @apply card-info-first-line;
   }
   .card-info-first-line-trending {
-    @apply card-info-first-line text-app-pure-white font-medium;
+    @apply card-info-first-line text-app-pure-white;
   }
 
   /* Category wrapper (Category icon & Category text) */
@@ -90,19 +90,41 @@
     @apply pl-[6px] pr-[6px];
   }
 
-  /* Thumbnail image wrapper */
+  /* The whole card image wrapper (with the image & bookmark icon) */
   .card-image {
     @apply rounded-lg relative;
   }
   .card-image-normal {
-    @apply card-image w-[164px];
+    @apply card-image w-full;
   }
   .card-image-trending {
-    @apply card-image w-[240px];
+    @apply card-image;
+  }
+
+  /* Only wrapping the image component */
+  .image-wrapper {
+    @apply relative;
+  }
+  .image-wrapper-normal {
+    @apply image-wrapper h-[133px] md:h-[140px] lg:h-[174px];
+  }
+  .image-wrapper-trending {
+    @apply image-wrapper w-[240px] h-[140px];
+  }
+
+  /* Single card wrapper */
+  .single-card-wrapper {
+    @apply w-full;
+  }
+  .single-card-wrapper-normal {
+    @apply single-card-wrapper mb-4 last:mb-0 basis-1/5 grow 2xs:m-2;
+  }
+  .single-card-wrapper-trending {
+    @apply single-card-wrapper relative mr-4 last:mr-0 2xs:m-1;
   }
 
   /* Overlay for trending card image */
-  .overlay {
+  .overlay-after {
     @apply after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50;
   }
 

@@ -27,6 +27,12 @@ module.exports = {
         'app-body-md': '0.9375rem',
         'app-body-sm': '0.8125rem',
       },
+      screens: {
+        '3xs': '320px',
+        '2xs': '375px',
+        xs: '420px',
+        ...defaultTheme.screens,
+      },
     },
   },
   plugins: [],
