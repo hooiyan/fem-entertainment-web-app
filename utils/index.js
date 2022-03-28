@@ -19,3 +19,14 @@ export const toBase64 = str =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
+
+// CONSTANTS for environment variables
+export const TMDB_ENDPOINT = process.env.TMDB_ENDPOINT
+export const TMDB_API_KEY = process.env.TMDB_API_KEY
+
+// Render results
+export const renderResults = (array, component) => {
+  return array.map(item => {
+    return component(item)
+  })
+}

@@ -1,22 +1,17 @@
-import Image from 'next/image'
-import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
-import { loadingAtom } from '../atoms/loadingAtom'
 import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
+import Footer from '../components/Footer'
 import SearchBar from '../components/SearchBar'
-import IconTMDBLong from '../assets/icon-tmdb-long.svg'
+import { renderResults } from '../utils'
 
 export default function Home() {
   const fetcher = url => fetch(url).then(res => res.json())
   const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
-  const [loading, setLoading] = useRecoilState(loadingAtom)
+  const { data, error } = useSWR('/api/trending', fetcher)
 
-  // const { data, error } = useSWR('/api/trending', fetcher)
-  const { data, error } = useSWR('/api/upcoming', fetcher)
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (error) return <div>Failed to load</div>
+  if (!data) return <div>Loading...</div>
 
   const upcomingResults = data.map((item, index) => {
     return (
@@ -57,6 +52,8 @@ export default function Home() {
     )
   })
 
+  const testingResult = renderResults(data, <CardTrending />)
+
   return (
     <>
       <SearchBar />
@@ -71,20 +68,7 @@ export default function Home() {
         <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10">
           {upcomingResults}
         </section>
-        <footer className="text-center text-app-greyish-blue text-xs lg:mb-6">
-          <p>Powered by</p>
-          <a
-            href="https://www.themoviedb.org/about/logos-attribution"
-            target="_blank"
-            rel="noreferrer">
-            <Image
-              src={IconTMDBLong}
-              width={150}
-              height={20}
-              alt="powered by TMDB"
-            />
-          </a>
-        </footer>
+        <Footer />
       </section>
     </>
   )

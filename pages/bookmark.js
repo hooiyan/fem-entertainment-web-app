@@ -1,6 +1,6 @@
 import SearchBar from '../components/SearchBar'
 
-export default function bookmark() {
+export default function Bookmark() {
   return (
     <>
       <SearchBar placeholder="Search for bookmarked shows" />
