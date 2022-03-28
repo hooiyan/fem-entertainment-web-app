@@ -110,7 +110,7 @@
     @apply w-full;
   }
   .single-card-wrapper-normal {
-    @apply single-card-wrapper mb-4 basis-1/5 grow 2xs:m-2;
+    @apply single-card-wrapper 2xs:w-[130px] xs:w-full mb-4 basis-1/5 grow 2xs:m-2;
   }
   .single-card-wrapper-trending {
     @apply single-card-wrapper relative mr-4 last:mr-0 sm:mr-6 md:mr-10;
@@ -138,7 +138,7 @@
 
   /* Film title */
   .film-title {
-    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate mr-4 w-[200px];
+    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate mr-4 w-[150px];
   }
   .film-title-normal {
     @apply film-title md:heading-xs;
