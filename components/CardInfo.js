@@ -48,7 +48,7 @@ export default function CardInfo({
         </div>
         <p>{renderRating}</p>
       </div>
-      <h2 className="font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate pr-1 mr-6 w-[164px]">
+      <h2 className={isTrending ? 'film-title-trending' : 'film-title-normal'}>
         {title}
       </h2>
     </div>

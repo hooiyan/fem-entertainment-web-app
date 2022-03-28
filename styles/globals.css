@@ -34,7 +34,7 @@
   }
 
   .section-title {
-    @apply text-xl font-light mb-6;
+    @apply text-xl font-light mb-6 md:heading-lg;
   }
 
   .app-transition {
@@ -53,22 +53,15 @@
     @apply fill-app-pure-white nav-hover-effect md:w-5 md:h-5;
   }
 
-  /* .card-normal-collection {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    column-gap: 7.5px;
-    row-gap: 15px;
-  } */
-
   /* Wrapper for (year, category, rating) */
   .card-info-first-line {
     @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
   }
   .card-info-first-line-normal {
-    @apply card-info-first-line;
+    @apply card-info-first-line md:text-[13px];
   }
   .card-info-first-line-trending {
-    @apply card-info-first-line text-app-pure-white;
+    @apply card-info-first-line text-app-pure-white md:text-[15px];
   }
 
   /* Category wrapper (Category icon & Category text) */
@@ -92,10 +85,10 @@
 
   /* The whole card image wrapper (with the image & bookmark icon) */
   .card-image {
-    @apply rounded-lg relative;
+    @apply rounded-lg relative w-full;
   }
   .card-image-normal {
-    @apply card-image w-full;
+    @apply card-image;
   }
   .card-image-trending {
     @apply card-image;
@@ -109,7 +102,7 @@
     @apply image-wrapper h-[133px] md:h-[140px] lg:h-[174px];
   }
   .image-wrapper-trending {
-    @apply image-wrapper w-[240px] h-[140px];
+    @apply image-wrapper w-[240px] h-[140px] sm:w-[470px] sm:h-[230px];
   }
 
   /* Single card wrapper */
@@ -120,7 +113,7 @@
     @apply single-card-wrapper mb-4 basis-1/5 grow 2xs:m-2;
   }
   .single-card-wrapper-trending {
-    @apply single-card-wrapper relative mr-4 last:mr-0 2xs:m-1;
+    @apply single-card-wrapper relative mr-4 last:mr-0 sm:mr-6 md:mr-10;
   }
 
   /* Overlay for trending card image */
@@ -141,5 +134,16 @@
 
   .h-scroll::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Film title */
+  .film-title {
+    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate mr-4 w-[200px];
+  }
+  .film-title-normal {
+    @apply film-title md:heading-xs;
+  }
+  .film-title-trending {
+    @apply film-title md:heading-sm;
   }
 }

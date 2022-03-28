@@ -57,7 +57,7 @@ export default function Home() {
       <SearchBar />
       <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible">
         <h2 className="section-title">Trending</h2>
-        <section className="h-scroll flex relative overflow-x-scroll">
+        <section className="h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2">
           {trendingResults}
         </section>
       </section>
