@@ -1,17 +1,22 @@
+import Image from 'next/image'
+import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
+import { loadingAtom } from '../atoms/loadingAtom'
 import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
 import SearchBar from '../components/SearchBar'
-
-const fetcher = url => fetch(url).then(res => res.json())
-const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
+import IconTMDBLong from '../assets/icon-tmdb-long.svg'
 
 export default function Home() {
-  const { data, error } = useSWR('/api/trending', fetcher)
-  // const { data, error } = useSWR('/api/upcoming', fetcher)
+  const fetcher = url => fetch(url).then(res => res.json())
+  const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
+  const [loading, setLoading] = useRecoilState(loadingAtom)
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading trending...</div>
+  // const { data, error } = useSWR('/api/trending', fetcher)
+  const { data, error } = useSWR('/api/upcoming', fetcher)
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   const upcomingResults = data.map((item, index) => {
     return (
@@ -55,7 +60,7 @@ export default function Home() {
   return (
     <>
       <SearchBar />
-      <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible">
+      <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10">
         <h2 className="section-title">Trending</h2>
         <section className="h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2">
           {trendingResults}
@@ -63,10 +68,23 @@ export default function Home() {
       </section>
       <section>
         <h2 className="section-title">Upcoming</h2>
-        <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between">
-          {upcomingResults}
+        <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10">
           {upcomingResults}
         </section>
+        <footer className="text-center text-app-greyish-blue text-xs lg:mb-6">
+          <p>Powered by</p>
+          <a
+            href="https://www.themoviedb.org/about/logos-attribution"
+            target="_blank"
+            rel="noreferrer">
+            <Image
+              src={IconTMDBLong}
+              width={150}
+              height={20}
+              alt="powered by TMDB"
+            />
+          </a>
+        </footer>
       </section>
     </>
   )
