@@ -8,5 +8,5 @@ export default function NowPlayingMovies() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  return <>{renderResults(data, CardNormal)}</>
+  return <>{renderResults(data.results, CardNormal)}</>
 }

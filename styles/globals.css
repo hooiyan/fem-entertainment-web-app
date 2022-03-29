@@ -150,4 +150,8 @@
   .card-collection-wrapper {
     @apply flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10;
   }
+
+  .card-hover-animation {
+    @apply ease-in duration-150 hover:transition-all hover:skew-y-3 motion-reduce:transition-none motion-reduce:hover:transform-none hover:even:-skew-y-3;
+  }
 }

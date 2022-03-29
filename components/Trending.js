@@ -8,5 +8,5 @@ export default function Trending() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  return <>{renderResults(data, CardTrending)}</>
+  return <>{renderResults(data.results, CardTrending)}</>
 }

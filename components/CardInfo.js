@@ -9,12 +9,14 @@ export default function CardInfo({
   year,
 }) {
   const displayYear = year.substring(0, 4)
+
   const renderCategoryIcon =
     category === 'movie' ? (
       <IconCategoryMovie className="pl-1 text-base" />
     ) : (
       <IconCategoryTv className="pl-1 text-base" />
     )
+
   const renderCategoryText = category === 'movie' ? 'Movie' : 'TV Series'
 
   const renderRating = rating === true ? '18+' : 'E'

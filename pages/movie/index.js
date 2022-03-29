@@ -1,8 +1,8 @@
-import Footer from '../components/Footer'
-import NowPlayingMovies from '../components/NowPlayingMovies'
-import PopularMovies from '../components/PopularMovies'
-import SearchBar from '../components/SearchBar'
-import TopRatedMovies from '../components/TopRatedMovies'
+import Footer from '../../components/Footer'
+import NowPlayingMovies from '../../components/NowPlayingMovies'
+import PopularMovies from '../../components/PopularMovies'
+import SearchBar from '../../components/SearchBar'
+import TopRatedMovies from '../../components/TopRatedMovies'
 
 export default function Movie() {
   return (

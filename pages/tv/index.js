@@ -1,7 +1,7 @@
-import AiringTodayTV from '../components/AiringTodayTV'
-import Footer from '../components/Footer'
-import OnTheAirTV from '../components/OnTheAirTV'
-import SearchBar from '../components/SearchBar'
+import AiringTodayTV from '../../components/AiringTodayTV'
+import Footer from '../../components/Footer'
+import OnTheAirTV from '../../components/OnTheAirTV'
+import SearchBar from '../../components/SearchBar'
 
 export default function TV() {
   return (
