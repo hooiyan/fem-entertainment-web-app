@@ -1,4 +1,4 @@
-import { getUrl, tvAiringToday, tvOnTheAir } from '../../lib/tmdb'
+import { getUrl, tvOnTheAir } from '../../lib/tmdb'
 
 export default async function handler(req, res) {
   try {

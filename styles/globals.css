@@ -146,4 +146,8 @@
   .film-title-trending {
     @apply film-title md:heading-sm;
   }
+
+  .card-collection-wrapper {
+    @apply flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10;
+  }
 }

@@ -15,10 +15,8 @@ export default function CardInfo({
     ) : (
       <IconCategoryTv className="pl-1 text-base" />
     )
-  const renderCategoryText =
-    category === 'movie'
-      ? category.charAt(0).toUpperCase() + category.slice(1)
-      : 'TV Series'
+  const renderCategoryText = category === 'movie' ? 'Movie' : 'TV Series'
+
   const renderRating = rating === true ? '18+' : 'E'
 
   return (

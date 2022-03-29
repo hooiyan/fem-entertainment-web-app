@@ -1,70 +1,22 @@
-import useSWR from 'swr'
-import CardNormal from '../components/CardNormal'
-import CardTrending from '../components/CardTrending'
 import Footer from '../components/Footer'
 import SearchBar from '../components/SearchBar'
-import { renderResults } from '../utils'
+import Trending from '../components/Trending'
+import UpcomingMovies from '../components/UpcomingMovies'
 
 export default function Home() {
-  const fetcher = url => fetch(url).then(res => res.json())
-  const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
-  const { data, error } = useSWR('/api/trending', fetcher)
-
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
-
-  const upcomingResults = data.map((item, index) => {
-    return (
-      <CardNormal
-        key={item.id}
-        // category={item.media_type}
-        rating={item.adult}
-        // src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
-        src={
-          item.backdrop_path
-            ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
-            : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
-        }
-        title={
-          item.title ? item.title : item.original_name || item.original_title
-        }
-        year={item.release_date || item.first_air_date}
-      />
-    )
-  })
-
-  const trendingResults = data.map((item, index) => {
-    return (
-      <CardTrending
-        key={item.id}
-        category={item.media_type}
-        rating={item.adult}
-        src={
-          item.backdrop_path
-            ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
-            : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
-        }
-        title={
-          item.title ? item.title : item.original_name || item.original_title
-        }
-        year={item.release_date || item.first_air_date}
-      />
-    )
-  })
-
   return (
     <>
       <SearchBar />
       <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10">
         <h2 className="section-title">Trending</h2>
         <section className="h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2">
-          {trendingResults}
+          <Trending />
         </section>
       </section>
       <section>
-        <h2 className="section-title">Upcoming</h2>
-        <section className="flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10">
-          {upcomingResults}
+        <h2 className="section-title">Upcoming Movies</h2>
+        <section className="card-collection-wrapper">
+          <UpcomingMovies />
         </section>
         <Footer />
       </section>
