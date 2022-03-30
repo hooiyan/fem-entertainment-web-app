@@ -1,31 +1,31 @@
 import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
-import { queryAtom } from '../atoms/queryAtom'
-import { resultAtom } from '../atoms/resultAtom'
 import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
+import { queryAtom, resultAtom } from '../recoil/atoms'
 import { fetcher } from '../utils'
 
 export default function Home() {
   const [query, setQuery] = useRecoilState(queryAtom)
   const [result, setResult] = useRecoilState(resultAtom)
-
   const { data, error } = useSWR(`/api/search/${query}`, fetcher)
 
-  const searchMovieTv = e => {
+  const searchAll = e => {
     e.preventDefault()
-    const value = e.target[0].value
-    setQuery(encodeURIComponent(value))
-    setResult(data)
+    if (query.length === 0) {
+      return
+    } else {
+      data ? setResult(data.results) : setResult(resultAtom)
+      setQuery('')
+    }
   }
 
   return (
     <>
-      <SearchBar handleSearch={searchMovieTv} />
       {console.log(result)}
-      {/* {renderResults(result, CardNormal)} */}
+      <SearchBar handleSubmit={searchAll} />
       <Collection
         isTrending
         Component={CardTrending}

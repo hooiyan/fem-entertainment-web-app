@@ -127,7 +127,7 @@
 
   /* The whole information wrapper (year, category, rating, title) */
   .card-info-wrapper-trending {
-    @apply w-[230px] absolute left-4 bottom-4 text-ellipsis truncate z-40;
+    @apply w-fit h-fit absolute left-4 bottom-4 text-ellipsis truncate z-40;
   }
 
   /* The horizontal scroll for trending section */
@@ -142,13 +142,13 @@
 
   /* Film title */
   .film-title {
-    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate mr-4 w-[150px];
+    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate w-full;
   }
   .film-title-normal {
     @apply film-title md:heading-xs;
   }
   .film-title-trending {
-    @apply film-title md:heading-sm;
+    @apply film-title md:heading-sm md:h-6;
   }
 
   .card-collection-wrapper {

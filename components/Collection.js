@@ -5,7 +5,7 @@ import Heading from './Heading'
 
 export default function Collection({
   Component = CardNormal,
-  endpoint,
+  endpoint = null,
   isTrending,
   limit = 8,
   media_type = 'movie',
