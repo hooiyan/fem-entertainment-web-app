@@ -142,10 +142,10 @@
 
   /* Film title */
   .film-title {
-    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate w-full;
+    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate;
   }
   .film-title-normal {
-    @apply film-title md:heading-xs;
+    @apply film-title md:heading-xs w-[150px] sm:w-[180px] md:w-[200px] lg:w-[268px];
   }
   .film-title-trending {
     @apply film-title md:heading-sm md:h-6;
