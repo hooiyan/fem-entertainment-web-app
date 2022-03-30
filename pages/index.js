@@ -1,24 +1,24 @@
 import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
+import { queryAtom } from '../atoms/queryAtom'
 import { resultAtom } from '../atoms/resultAtom'
-import { searchAtom } from '../atoms/searchAtom'
+import CardNormal from '../components/CardNormal'
+import CardTrending from '../components/CardTrending'
+import Collection from '../components/Collection'
 import Footer from '../components/Footer'
-import Heading from '../components/Heading'
 import SearchBar from '../components/SearchBar'
-import Trending from '../components/Trending'
-import UpcomingMovies from '../components/UpcomingMovies'
 import { fetcher } from '../utils'
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useRecoilState(searchAtom)
+  const [query, setQuery] = useRecoilState(queryAtom)
   const [result, setResult] = useRecoilState(resultAtom)
 
-  const { data, error } = useSWR(`/api/search/${searchQuery}`, fetcher)
+  const { data, error } = useSWR(`/api/search/${query}`, fetcher)
 
   const searchMovieTv = e => {
     e.preventDefault()
     const value = e.target[0].value
-    setSearchQuery(encodeURIComponent(value))
+    setQuery(encodeURIComponent(value))
     setResult(data)
   }
 
@@ -27,18 +27,18 @@ export default function Home() {
       <SearchBar handleSearch={searchMovieTv} />
       {console.log(result)}
       {/* {renderResults(result, CardNormal)} */}
-      <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10">
-        <Heading title="Trending today" />
-        <section className="h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2">
-          <Trending />
-        </section>
-      </section>
-      <section>
-        <Heading title="Upcoming movies" />
-        <section className="card-collection-wrapper">
-          <UpcomingMovies />
-        </section>
-      </section>
+      <Collection
+        isTrending
+        Component={CardTrending}
+        endpoint="trending"
+        limit={10}
+        title="Trending today"
+      />
+      <Collection
+        Component={CardNormal}
+        endpoint="upcoming-movies"
+        title="Upcoming movies"
+      />
       <Footer />
     </>
   )

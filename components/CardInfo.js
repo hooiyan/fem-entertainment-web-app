@@ -8,7 +8,7 @@ export default function CardInfo({
   title,
   year,
 }) {
-  const displayYear = year.substring(0, 4)
+  const displayYear = !year ? 'Unknown' : year.substring(0, 4)
 
   const renderCategoryIcon =
     category === 'movie' ? (

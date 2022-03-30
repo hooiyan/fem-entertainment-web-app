@@ -1,32 +1,45 @@
+import { useRecoilState } from 'recoil'
+import useSWR from 'swr'
+import { queryAtom } from '../../atoms/queryAtom'
+import { resultAtom } from '../../atoms/resultAtom'
+import CardNormal from '../../components/CardNormal'
+import Collection from '../../components/Collection'
 import Footer from '../../components/Footer'
-import Heading from '../../components/Heading'
-import NowPlayingMovies from '../../components/NowPlayingMovies'
-import PopularMovies from '../../components/PopularMovies'
 import SearchBar from '../../components/SearchBar'
-import TopRatedMovies from '../../components/TopRatedMovies'
+import { fetcher, renderResults } from '../../utils'
 
 export default function Movie() {
+  const [query, setQuery] = useRecoilState(queryAtom)
+  const [result, setResult] = useRecoilState(resultAtom)
+
+  const { data, error } = useSWR(`/api/search/movie/${query}`, fetcher)
+
+  const searchMovie = e => {
+    e.preventDefault()
+
+    if (query.length === 0) {
+      return
+    } else {
+      data ? setResult(data.results) : setResult([])
+      data ? console.log(data.total_results) : console.log(0)
+      setQuery('')
+    }
+  }
+
   return (
     <>
-      <SearchBar placeholder="Search for movies" />
-      <section>
-        <Heading title="Now playing" />
-        <section className="card-collection-wrapper">
-          <NowPlayingMovies />
-        </section>
-      </section>
-      <section>
-        <Heading title="Popular" />
-        <section className="card-collection-wrapper">
-          <PopularMovies />
-        </section>
-      </section>
-      <section>
-        <Heading title="Top rated" />
-        <section className="card-collection-wrapper">
-          <TopRatedMovies />
-        </section>
-      </section>
+      <SearchBar
+        handleChange={e => setQuery(e.target.value)}
+        handleSubmit={searchMovie}
+        placeholder="Search for movies"
+      />
+      <div>{renderResults(result, CardNormal)}</div>
+      {result.map(item => {
+        console.log(typeof item.release_date)
+      })}
+      <Collection endpoint="now-playing-movies" title="Now playing" />
+      <Collection endpoint="popular-movies" title="Popular" />
+      <Collection endpoint="top-rated-movies" title="Top rated" />
       <Footer />
     </>
   )
