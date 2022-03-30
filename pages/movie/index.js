@@ -4,7 +4,6 @@ import { queryAtom } from '../../atoms/queryAtom'
 import { resultAtom } from '../../atoms/resultAtom'
 import CardNormal from '../../components/CardNormal'
 import Collection from '../../components/Collection'
-import Footer from '../../components/Footer'
 import SearchBar from '../../components/SearchBar'
 import { fetcher, renderResults } from '../../utils'
 
@@ -40,7 +39,6 @@ export default function Movie() {
       <Collection endpoint="now-playing-movies" title="Now playing" />
       <Collection endpoint="popular-movies" title="Popular" />
       <Collection endpoint="top-rated-movies" title="Top rated" />
-      <Footer />
     </>
   )
 }

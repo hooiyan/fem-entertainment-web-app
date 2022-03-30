@@ -8,6 +8,7 @@ export default function Collection({
   endpoint,
   isTrending,
   limit = 8,
+  media_type = 'movie',
   title,
 }) {
   const { data, error } = useSWR(`/api/${endpoint}`, fetcher)
@@ -29,7 +30,7 @@ export default function Collection({
             ? `h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2`
             : `card-collection-wrapper`
         }>
-        {renderResults(sliceArray(data.results, limit), Component)}
+        {renderResults(sliceArray(data.results, limit), Component, media_type)}
       </section>
     </section>
   )

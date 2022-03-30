@@ -1,5 +1,3 @@
-import ImagePlaceholder from '../assets/placeholder.jpg'
-
 // To create a smoother loading effect
 // Reference: https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 export const shimmer = (w, h) => `

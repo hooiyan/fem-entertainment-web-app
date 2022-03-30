@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import IconTMDBLong from '../assets/icon-tmdb-long.svg'
 
 export default function Footer() {

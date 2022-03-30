@@ -5,7 +5,6 @@ import { resultAtom } from '../atoms/resultAtom'
 import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
-import Footer from '../components/Footer'
 import SearchBar from '../components/SearchBar'
 import { fetcher } from '../utils'
 
@@ -39,7 +38,6 @@ export default function Home() {
         endpoint="upcoming-movies"
         title="Upcoming movies"
       />
-      <Footer />
     </>
   )
 }

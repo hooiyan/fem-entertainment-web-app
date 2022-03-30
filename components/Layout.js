@@ -1,3 +1,4 @@
+import Footer from './Footer'
 import Navigation from './Navigation'
 
 export default function Layout({ children }) {
@@ -6,6 +7,7 @@ export default function Layout({ children }) {
       <Navigation />
       <main className="flex flex-col py-6 px-4 md:m-6 md:px-0 md:pt-0 lg:min-w-[800px] lg:ml-32">
         {children}
+        <Footer />
       </main>
     </div>
   )
