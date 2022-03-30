@@ -2,12 +2,12 @@ import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
 import { resultAtom } from '../atoms/resultAtom'
 import { searchAtom } from '../atoms/searchAtom'
-import CardNormal from '../components/CardNormal'
 import Footer from '../components/Footer'
+import Heading from '../components/Heading'
 import SearchBar from '../components/SearchBar'
 import Trending from '../components/Trending'
-import { fetcher, renderResults } from '../utils'
 import UpcomingMovies from '../components/UpcomingMovies'
+import { fetcher } from '../utils'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useRecoilState(searchAtom)
@@ -20,25 +20,25 @@ export default function Home() {
     const value = e.target[0].value
     setSearchQuery(encodeURIComponent(value))
     setResult(data)
-    console.log('data: ', data)
   }
 
   return (
     <>
       <SearchBar handleSearch={searchMovieTv} />
+      {console.log(result)}
+      {/* {renderResults(result, CardNormal)} */}
       <section className="overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10">
-        <h2 className="section-title">Trending Today</h2>
+        <Heading title="Trending today" />
         <section className="h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2">
           <Trending />
         </section>
       </section>
       <section>
-        <h2 className="section-title">Upcoming Movies</h2>
+        <Heading title="Upcoming movies" />
         <section className="card-collection-wrapper">
           <UpcomingMovies />
         </section>
       </section>
-      {/* {renderResults(result, CardNormal)} */}
       <Footer />
     </>
   )

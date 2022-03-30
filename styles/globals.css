@@ -33,8 +33,12 @@
     @apply text-app-body-sm font-light;
   }
 
+  .heading-section {
+    @apply flex items-baseline justify-between mb-6;
+  }
+
   .section-title {
-    @apply text-xl font-light mb-6 md:heading-lg;
+    @apply text-xl capitalize font-light md:heading-lg;
   }
 
   .app-transition {

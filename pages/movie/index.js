@@ -1,4 +1,5 @@
 import Footer from '../../components/Footer'
+import Heading from '../../components/Heading'
 import NowPlayingMovies from '../../components/NowPlayingMovies'
 import PopularMovies from '../../components/PopularMovies'
 import SearchBar from '../../components/SearchBar'
@@ -9,19 +10,19 @@ export default function Movie() {
     <>
       <SearchBar placeholder="Search for movies" />
       <section>
-        <h2 className="section-title">Now Playing</h2>
+        <Heading title="Now playing" />
         <section className="card-collection-wrapper">
           <NowPlayingMovies />
         </section>
       </section>
       <section>
-        <h2 className="section-title">Popular</h2>
+        <Heading title="Popular" />
         <section className="card-collection-wrapper">
           <PopularMovies />
         </section>
       </section>
       <section>
-        <h2 className="section-title">Top Rated</h2>
+        <Heading title="Top rated" />
         <section className="card-collection-wrapper">
           <TopRatedMovies />
         </section>

@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { fetcher, renderResults } from '../utils'
+import { fetcher, renderResults, sliceArray } from '../utils'
 import CardNormal from './CardNormal'
 
 export default function NowPlayingMovies() {
@@ -8,5 +8,5 @@ export default function NowPlayingMovies() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  return <>{renderResults(data.results, CardNormal)}</>
+  return <>{renderResults(sliceArray(data.results, 8), CardNormal)}</>
 }

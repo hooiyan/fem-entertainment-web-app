@@ -1,5 +1,6 @@
 import AiringTodayTV from '../../components/AiringTodayTV'
 import Footer from '../../components/Footer'
+import Heading from '../../components/Heading'
 import OnTheAirTV from '../../components/OnTheAirTV'
 import SearchBar from '../../components/SearchBar'
 
@@ -8,13 +9,13 @@ export default function TV() {
     <>
       <SearchBar placeholder="Search for TV series" />
       <section>
-        <h2 className="section-title">Airing Today</h2>
+        <Heading title="Airing Today" />
         <section className="card-collection-wrapper">
           <AiringTodayTV />
         </section>
       </section>
       <section>
-        <h2 className="section-title">On The Air</h2>
+        <Heading title="On The Air" />
         <section className="card-collection-wrapper">
           <OnTheAirTV />
         </section>
