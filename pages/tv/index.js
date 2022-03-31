@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
 import Collection from '../../components/Collection'
 import SearchBar from '../../components/SearchBar'
-import { queryAtom, tvResultAtom } from '../../recoil/atoms'
+import { queryAtom, tvResultAtom } from '../../lib/recoil-atoms'
 import { fetcher } from '../../utils'
 
 export default function TV() {
@@ -15,7 +15,7 @@ export default function TV() {
     if (query.length === 0) {
       return
     } else {
-      data ? setTVResult(data.results) : setTVResult(tvResultAtom)
+      data ? setTVResult(data.results) : setTVResult([])
       setQuery('')
     }
   }
@@ -29,7 +29,7 @@ export default function TV() {
         media_type="tv"
         title="Airing today"
       />
-      <Collection endpoint="on-the-air" media_type="tv" title="On the air" />I
+      <Collection endpoint="on-the-air" media_type="tv" title="On the air" />
     </>
   )
 }

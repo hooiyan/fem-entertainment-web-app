@@ -6,6 +6,7 @@ import Heading from './Heading'
 export default function Collection({
   Component = CardNormal,
   endpoint = null,
+  href = '/movie',
   isTrending,
   limit = 8,
   media_type = 'movie',
@@ -23,7 +24,7 @@ export default function Collection({
           ? `overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10`
           : null
       }>
-      <Heading title={title} />
+      <Heading title={title} href={href} />
       <section
         className={
           isTrending

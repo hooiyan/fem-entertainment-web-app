@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { queryAtom } from '../recoil/atoms'
+import { queryAtom } from '../lib/recoil-atoms'
 import IconSearch from './icons/IconSearch'
 import SearchButton from './SearchButton'
 
@@ -8,6 +9,7 @@ export default function SearchBar({
   placeholder = 'Search for movies or TV series',
 }) {
   const [query, setQuery] = useRecoilState(queryAtom)
+  const [input, setInput] = useState('')
 
   return (
     <form onSubmit={handleSubmit} className="flex pb-6 lg:mt-9 md:pb-10">

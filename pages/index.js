@@ -4,7 +4,7 @@ import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
-import { queryAtom, resultAtom } from '../recoil/atoms'
+import { queryAtom, resultAtom } from '../lib/recoil-atoms'
 import { fetcher } from '../utils'
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
     if (query.length === 0) {
       return
     } else {
-      data ? setResult(data.results) : setResult(resultAtom)
+      data ? setResult(data.results) : setResult([])
       setQuery('')
     }
   }
@@ -34,9 +34,19 @@ export default function Home() {
         title="Trending today"
       />
       <Collection
-        Component={CardNormal}
         endpoint="upcoming-movies"
+        href="/movie/upcoming"
         title="Upcoming movies"
+      />
+      <Collection
+        endpoint="popular-movies"
+        href="/movie/popular"
+        title="Popular"
+      />
+      <Collection
+        endpoint="top-rated-movies"
+        href="/movie/top-rated"
+        title="Top rated"
       />
     </>
   )
