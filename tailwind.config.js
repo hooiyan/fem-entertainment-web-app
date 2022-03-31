@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        wiggle: 'wiggle 0.3s linear',
+        'wiggle-opposite': 'wiggleOpposite 0.3s linear',
+      },
       colors: {
         'app-pure-white': 'hsl(0, 0%, 100%)', // #FFFFFF
         'app-red': 'hsl(0, 97%, 63%)', // #FC4747
@@ -26,6 +30,16 @@ module.exports = {
         'app-heading-xs': '1.125rem',
         'app-body-md': '0.9375rem',
         'app-body-sm': '0.8125rem',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'skewY(0deg)' },
+          '50%': { transform: 'skewY(-3deg)' },
+        },
+        wiggleOpposite: {
+          '0%, 100%': { transform: 'skewY(0deg)' },
+          '50%': { transform: 'skewY(3deg)' },
+        },
       },
       screens: {
         '3xs': '320px',
