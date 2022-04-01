@@ -34,17 +34,34 @@ export default function Home() {
       <Collection
         endpoint="upcoming-movies"
         href="/movie/upcoming"
+        limit={4}
         title="Upcoming movies"
       />
       <Collection
         endpoint="popular-movies"
         href="/movie/popular"
-        title="Popular"
+        limit={4}
+        title="Popular movies"
       />
       <Collection
         endpoint="top-rated-movies"
         href="/movie/top-rated"
-        title="Top rated"
+        limit={4}
+        title="Top rated movies"
+      />
+      <Collection
+        endpoint="airing-today"
+        href="/tv/airing-today"
+        limit={4}
+        media_type="tv"
+        title="TV airing today"
+      />
+      <Collection
+        endpoint="on-the-air"
+        href="/tv/on-the-air"
+        limit={4}
+        media_type="tv"
+        title="TV on the air"
       />
     </>
   )
