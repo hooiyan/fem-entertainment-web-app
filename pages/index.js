@@ -1,6 +1,5 @@
 import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
-import CardNormal from '../components/CardNormal'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
@@ -24,7 +23,6 @@ export default function Home() {
 
   return (
     <>
-      {console.log(result)}
       <SearchBar handleSubmit={searchAll} />
       <Collection
         isTrending

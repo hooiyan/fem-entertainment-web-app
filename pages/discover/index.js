@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { getUrl } from '../../lib/tmdb'
-import { TMDB_API_KEY, TMDB_ENDPOINT } from '../../utils'
 
 export default function discover({ data }) {
   return (

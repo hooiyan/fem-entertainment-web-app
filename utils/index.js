@@ -50,7 +50,7 @@ export const renderResults = (array, Component, media_type) => {
 }
 
 // Slice array
-export const sliceArray = (array, limit) => {
-  const sliced = array.slice(0, limit)
+export const sliceArray = (arr, limit) => {
+  const sliced = arr.slice(0, limit)
   return sliced
 }
