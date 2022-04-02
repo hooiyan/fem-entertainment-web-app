@@ -6,8 +6,7 @@ import { searchMovie } from '../../utils'
 export default function Movie({ data }) {
   return (
     <>
-      <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
-      {/* <Hero /> */}
+    <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
       <Genres arr={data.genres} media_type="movie" />
     </>
   )

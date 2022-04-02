@@ -5,6 +5,7 @@ import Heading from './Heading'
 import Loading from './Loading'
 
 export default function Collection({
+  arr,
   Component = CardNormal,
   endpoint = null,
   href = '/movie',
@@ -34,7 +35,7 @@ export default function Collection({
                 : `card-collection-wrapper`
             }>
             {renderResults(
-              sliceArray(data.results, limit),
+              sliceArray(data.results || arr, limit),
               Component,
               media_type
             )}

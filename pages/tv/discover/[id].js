@@ -1,44 +1,35 @@
-import { getUrl } from '../../../lib/tmdb'
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import CollectionSearch from '../../../components/CollectionSearch'
+import Loading from '../../../components/Loading'
+import SearchBar from '../../../components/SearchBar'
+import { discoverTV, genreTV, getUrl, searchTv } from '../../../lib/tmdb'
 
 export default function Genre({ data }) {
-  // const router = useRouter()
-  // const { id } = router.query
-  // const [result, setResult] = useState(null)
-  // const [isLoading, setLoading] = useState(false)
-  // const url = getUrl(`discover/movie`, `&with_genres=${id}`)
-
-  // useEffect(() => {
-  //   setLoading(true)
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setResult(data)
-  //       setLoading(false)
-  //     }, [])
-
-  //   if (isLoading) return <p>Loading...</p>
-  //   if (!data) return <p>No profile data</p>
-
-  return <div>{console.log(data.results)}</div>
-  // })
+  return (
+    <div>
+      <SearchBar placeholder="Search for TV series" searchPath={searchTv} />
+      {data ? (
+        <CollectionSearch arr={data.results} isGenre media_type="tv" />
+      ) : (
+        <Loading />
+      )}
+    </div>
+  )
 }
 
 export async function getStaticPaths() {
-  const url = getUrl('genre/movie/list')
+  const url = getUrl(genreTV)
   const res = await fetch(url)
   const data = await res.json()
 
   const paths = data.genres.map(genre => ({
-    params: { id: genre.id.toString(), name: genre.name },
+    params: { id: genre.id.toString() },
   }))
 
   return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
-  const url = getUrl(`discover/movie`, `&with_genres=${params.id}`)
+  const url = getUrl(discoverTV, `&with_genres=${params.id}`)
   const res = await fetch(url)
   const data = await res.json()
 
@@ -46,15 +37,3 @@ export async function getStaticProps({ params }) {
     props: { data },
   }
 }
-
-// export async function getStaticProps() {
-//   const url = getUrl('genre/movie/list')
-//   const res = await fetch(url)
-//   const data = await res.json()
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   }
-// }

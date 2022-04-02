@@ -1,10 +1,18 @@
-export default function CardGenre({ bgColor, text }) {
+import React from 'react'
+
+const CardGenre = React.forwardRef(({ onClick, href, text }, ref) => {
   return (
-    <li
-      className={`odd:to-grey-500 card-hover-animation m-2 flex h-44 w-44 grow items-center justify-center rounded-lg p-8 text-center text-xl font-medium ${bgColor} odd:border-4 odd:border-app-semi-dark-blue even:bg-app-semi-dark-blue `}>
+    <a
+      href={href}
+      onClick={onClick}
+      ref={ref}
+      className="card-hover-animation m-2 flex h-44 w-44 grow items-center justify-center rounded-lg p-8 text-center text-xl font-medium odd:bg-app-greyish-blue even:bg-app-semi-dark-blue">
       {text}
-    </li>
+    </a>
   )
-}
+})
+
+CardGenre.displayName = 'CardGenre'
+export default CardGenre
 
 // odd:bg-gradient-to-b even:from-app-greyish-blue even:bg-gradient-to-b odd:from-pink-700
