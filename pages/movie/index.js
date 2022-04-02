@@ -1,26 +1,20 @@
-import Link from 'next/link'
-import CardGenre from '../../components/CardGenre'
+import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
-import { getUrl } from '../../lib/tmdb'
+import { genreMovie, getUrl } from '../../lib/tmdb'
 import { searchMovie } from '../../utils'
 
 export default function Movie({ data }) {
   return (
     <>
       <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
-      <ul className="flex flex-wrap justify-between mb-10">
-        {data.genres.map(genre => (
-          <Link key={genre.id} href={`/movie/discover/${genre.id}`} passHref>
-            <CardGenre text={genre.name} />
-          </Link>
-        ))}
-      </ul>
+      {/* <Hero /> */}
+      <Genres arr={data.genres} media_type="movie" />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const url = getUrl('genre/movie/list')
+  const url = getUrl(genreMovie)
   const res = await fetch(url)
   const data = await res.json()
 
