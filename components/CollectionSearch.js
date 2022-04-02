@@ -1,8 +1,5 @@
-import { useRecoilValue } from 'recoil'
-import { loadingAtom } from '../lib/recoil-atoms'
 import { renderResults, sliceArray } from '../utils'
 import CardNormal from './CardNormal'
-import Loading from './Loading'
 
 export default function CollectionSearch({
   arr,
@@ -10,8 +7,6 @@ export default function CollectionSearch({
   searchTerm,
   totalResult,
 }) {
-  const loading = useRecoilValue(loadingAtom)
-
   return (
     <section>
       <h1 className="md:heading-lg mb-6 text-xl font-light">{`Found ${totalResult} results for '${searchTerm}'`}</h1>

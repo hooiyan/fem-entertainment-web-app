@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
+import Loading from '../../../components/Loading'
 import SearchBar from '../../../components/SearchBar'
 import { fetcher, searchTV } from '../../../utils'
 
@@ -9,8 +10,7 @@ export default function SearchedTV() {
   const { id } = router.query
   const { data, error } = useSWR(`/api/search/tv/${id}`, fetcher)
 
-  if (error) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
+  if (error) return <div>Error occurred</div>
 
   return (
     <>
@@ -22,7 +22,9 @@ export default function SearchedTV() {
           searchTerm={id}
           totalResult={data.total_results}
         />
-      ) : null}
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

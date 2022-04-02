@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
+import Loading from '../../../components/Loading'
 import SearchBar from '../../../components/SearchBar'
-import { searchAll } from '../../../utils'
-import { fetcher } from '../../../utils'
+import { fetcher, searchAll } from '../../../utils'
 
 export default function SearchedAll() {
   const router = useRouter()
@@ -13,8 +13,7 @@ export default function SearchedAll() {
     ? data.results.filter(item => item.media_type !== 'person')
     : []
 
-  if (error) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
+  if (error) return <div>Error occurred</div>
 
   return (
     <>
@@ -28,7 +27,9 @@ export default function SearchedAll() {
           searchTerm={id}
           totalResult={data.total_results}
         />
-      ) : null}
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }
