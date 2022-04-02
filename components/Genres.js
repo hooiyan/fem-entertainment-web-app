@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import CardGenre from './CardGenre'
 
-export default function Genres({ arr, media_type }) {
+export default function Genres({ arr, media_type, oddBgColor }) {
   return (
     <section className="mb-10 flex flex-wrap justify-between">
       {arr.map(genre => (
@@ -9,7 +9,7 @@ export default function Genres({ arr, media_type }) {
           key={genre.id}
           href={`/${media_type}/discover/${genre.id}`}
           passHref>
-          <CardGenre text={genre.name} />
+          <CardGenre oddBgColor={oddBgColor} text={genre.name} />
         </Link>
       ))}
     </section>

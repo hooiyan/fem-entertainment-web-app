@@ -6,8 +6,12 @@ import { searchMovie } from '../../utils'
 export default function Movie({ data }) {
   return (
     <>
-    <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
-      <Genres arr={data.genres} media_type="movie" />
+      <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
+      <Genres
+        arr={data.genres}
+        media_type="movie"
+        oddBgColor="odd:bg-cyan-700"
+      />
     </>
   )
 }

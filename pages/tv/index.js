@@ -7,7 +7,7 @@ export default function TV({ data }) {
   return (
     <>
       <SearchBar placeholder="Search for TV series" searchPath={searchTV} />
-      <Genres arr={data.genres} media_type="tv" />
+      <Genres arr={data.genres} media_type="tv" oddBgColor="odd:bg-teal-700" />
     </>
   )
 }
