@@ -13,7 +13,7 @@ export default function CollectionSearch({
   const loading = useRecoilValue(loadingAtom)
 
   return (
-    <section className="">
+    <section>
       <h1 className="md:heading-lg mb-6 text-xl font-light">{`Found ${totalResult} results for '${searchTerm}'`}</h1>
       <section className="card-collection-wrapper">
         {renderResults(sliceArray(arr, 20), CardNormal, media_type)}
