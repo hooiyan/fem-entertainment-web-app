@@ -4,9 +4,9 @@ import { fetcher } from '../../utils'
 
 export default function Movie() {
   const router = useRouter()
-  const { movieID } = router.query
+  const { id } = router.query
   const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
-  const { data, error } = useSWR(`/api/movie/${movieID}`, fetcher)
+  const { data, error } = useSWR(`/api/movie/${id}`, fetcher)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>

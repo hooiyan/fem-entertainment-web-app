@@ -7,12 +7,20 @@ import {
   searchMovie,
 } from '../../../lib/tmdb'
 import Loading from '../../../components/Loading'
+import LoadMore from '../../../components/LoadMore'
 
 export default function Genre({ data }) {
   return (
     <div>
       <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
-      {data ? <CollectionSearch arr={data.results} isGenre /> : <Loading />}
+      {data ? (
+        <section>
+          <CollectionSearch arr={data.results} isGenre />
+          <LoadMore />
+        </section>
+      ) : (
+        <Loading />
+      )}
     </div>
   )
 }
