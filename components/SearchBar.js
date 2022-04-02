@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
-import { loadingAtom, queryAtom } from '../lib/recoil-atoms'
+import { queryAtom } from '../lib/recoil-atoms'
 import IconSearch from './icons/IconSearch'
-import Button from './SearchButton'
+import SearchButton from './SearchButton'
 
 export default function SearchBar({
   placeholder = 'Search for movies or TV series',
@@ -31,7 +31,7 @@ export default function SearchBar({
         onChange={e => setQuery(e.target.value)}
         value={query}
       />
-      <Button text='Search' type='submit'   />
+      <SearchButton />
     </form>
   )
 }

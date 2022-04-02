@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
+import LoadMore from '../../../components/LoadMore'
 import SearchBar from '../../../components/SearchBar'
 import { fetcher, searchAll } from '../../../utils'
 
@@ -22,11 +23,14 @@ export default function SearchedAll() {
         searchPath={searchAll}
       />
       {data ? (
-        <CollectionSearch
-          arr={filteredResults}
-          searchTerm={id}
-          totalResult={data.total_results}
-        />
+        <>
+          <CollectionSearch
+            arr={filteredResults}
+            searchTerm={id}
+            totalResult={data.total_results}
+          />
+          <LoadMore />
+        </>
       ) : (
         <Loading />
       )}
