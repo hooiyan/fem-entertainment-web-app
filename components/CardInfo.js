@@ -28,21 +28,24 @@ export default function CardInfo({
           isTrending
             ? 'card-info-first-line-trending'
             : 'card-info-first-line-normal'
-        }>
+        }
+      >
         <p>{displayYear}</p>
         <div
           className={
             isTrending
               ? 'card-info-category-2in1-trending'
               : 'card-info-category-2in1-normal'
-          }>
+          }
+        >
           {renderCategoryIcon}
           <p
             className={
               isTrending
                 ? 'card-info-category-text-trending'
                 : 'card-info-category-text-normal'
-            }>
+            }
+          >
             {renderCategoryText}
           </p>
         </div>

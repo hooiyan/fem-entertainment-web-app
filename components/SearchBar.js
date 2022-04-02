@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
-import { queryAtom } from '../lib/recoil-atoms'
+import { loadingAtom, queryAtom } from '../lib/recoil-atoms'
 import IconSearch from './icons/IconSearch'
 import SearchButton from './SearchButton'
 
@@ -9,6 +9,7 @@ export default function SearchBar({
   searchPath,
 }) {
   const router = useRouter()
+  const [loading, setLoading] = useRecoilState(loadingAtom)
   const [query, setQuery] = useRecoilState(queryAtom)
 
   const handleSearch = e => {
@@ -22,10 +23,10 @@ export default function SearchBar({
   }
 
   return (
-    <form onSubmit={handleSearch} className="flex pb-6 lg:mt-9 md:pb-10">
+    <form onSubmit={handleSearch} className="flex pb-6 md:pb-10 lg:mt-9">
       <IconSearch className="h-6 w-6 md:h-8 md:w-8" />
       <input
-        className="bg-app-dark-blue caret-app-red w-full rounded-none pb-[8px] mx-4 border-b border-app-dark-blue text-base font-light placeholder:text-app-placeholder placeholder:text-base focus:outline-none focus:border-b focus:border-app-greyish-blue md:heading-md md:placeholder:heading-md"
+        className="md:heading-md md:placeholder:heading-md mx-4 w-full rounded-none border-b border-app-dark-blue bg-app-dark-blue pb-[8px] text-base font-light caret-app-red placeholder:text-base placeholder:text-app-placeholder focus:border-b focus:border-app-greyish-blue focus:outline-none"
         type="text"
         placeholder={placeholder}
         onChange={e => setQuery(e.target.value)}

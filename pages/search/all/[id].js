@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import CollectionSearch from '../../components/CollectionSearch'
-import SearchBar from '../../components/SearchBar'
-import { fetcher } from '../../utils'
+import CollectionSearch from '../../../components/CollectionSearch'
+import SearchBar from '../../../components/SearchBar'
+import { searchAll } from '../../../utils'
+import { fetcher } from '../../../utils'
 
 export default function SearchedAll() {
   const router = useRouter()
@@ -19,7 +20,7 @@ export default function SearchedAll() {
     <>
       <SearchBar
         placeholder="Search for movies or TV series"
-        searchPath="/search/"
+        searchPath={searchAll}
       />
       {data ? (
         <CollectionSearch

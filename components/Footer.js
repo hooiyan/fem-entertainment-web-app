@@ -3,12 +3,13 @@ import IconTMDBLong from '../assets/icon-tmdb-long.svg'
 
 export default function Footer() {
   return (
-    <footer className="text-center text-app-greyish-blue text-xs pb-6">
+    <footer className="w-full pb-6 text-center text-xs text-app-greyish-blue">
       <p>Powered by</p>
       <a
         href="https://www.themoviedb.org/about/logos-attribution"
         target="_blank"
-        rel="noreferrer">
+        rel="noreferrer"
+      >
         <Image
           src={IconTMDBLong}
           width={150}

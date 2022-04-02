@@ -21,16 +21,18 @@ export default function Collection({
     <section
       className={
         isTrending
-          ? `overflow-hidden w-full h-full mb-6 lg:overflow-visible md:mb-10`
+          ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
           : null
-      }>
+      }
+    >
       <Heading title={title} href={href} />
       <section
         className={
           isTrending
-            ? `h-scroll flex relative overflow-x-scroll 2xs:ml-2 2xs:mt-2`
+            ? `h-scroll relative flex overflow-x-scroll 2xs:ml-2 2xs:mt-2`
             : `card-collection-wrapper`
-        }>
+        }
+      >
         {renderResults(sliceArray(data.results, limit), Component, media_type)}
       </section>
     </section>

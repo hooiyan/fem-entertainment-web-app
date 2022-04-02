@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply h-full w-full;
+  }
   body {
-    @apply bg-app-dark-blue max-w-[1440px] mx-auto;
+    @apply mx-auto h-full w-full max-w-[1440px] bg-app-dark-blue;
   }
 }
 
@@ -34,11 +37,11 @@
   }
 
   .heading-section {
-    @apply flex items-baseline justify-between mb-6;
+    @apply mb-6 flex items-baseline justify-between;
   }
 
   .section-title {
-    @apply text-xl capitalize font-light md:heading-lg;
+    @apply md:heading-lg text-xl font-light capitalize;
   }
 
   .app-transition {
@@ -46,20 +49,20 @@
   }
 
   .nav-hover-effect {
-    @apply hover:fill-app-red hover:app-transition;
+    @apply hover:app-transition hover:fill-app-red;
   }
 
   .icon-nav {
-    @apply fill-app-greyish-blue nav-hover-effect md:w-5 md:h-5;
+    @apply nav-hover-effect fill-app-greyish-blue md:h-5 md:w-5;
   }
 
   .active-link {
-    @apply fill-app-pure-white nav-hover-effect md:w-5 md:h-5;
+    @apply nav-hover-effect fill-app-pure-white md:h-5 md:w-5;
   }
 
   /* Wrapper for (year, category, rating) */
   .card-info-first-line {
-    @apply flex text-app-grey text-[11px] font-light mt-2 mb-1;
+    @apply mt-2 mb-1 flex text-[11px] font-light text-app-grey;
   }
   .card-info-first-line-normal {
     @apply card-info-first-line md:text-[13px];
@@ -89,7 +92,7 @@
 
   /* The whole card image wrapper (with the image & bookmark icon) */
   .card-image {
-    @apply rounded-lg relative w-full;
+    @apply relative w-full rounded-lg;
   }
   .card-image-normal {
     @apply card-image;
@@ -106,7 +109,7 @@
     @apply image-wrapper h-[133px] md:h-[140px] lg:h-[174px];
   }
   .image-wrapper-trending {
-    @apply image-wrapper w-[240px] h-[140px] sm:w-[470px] sm:h-[230px];
+    @apply image-wrapper h-[140px] w-[240px] sm:h-[230px] sm:w-[470px];
   }
 
   /* Single card wrapper */
@@ -114,7 +117,7 @@
     @apply w-full;
   }
   .single-card-wrapper-normal {
-    @apply single-card-wrapper 2xs:w-[130px] xs:w-full mb-4 basis-1/5 grow 2xs:m-2;
+    @apply single-card-wrapper mb-4 grow basis-1/5 2xs:m-2 2xs:w-[130px] xs:w-full;
   }
   .single-card-wrapper-trending {
     @apply single-card-wrapper relative mr-4 last:mr-0 sm:mr-6 md:mr-10;
@@ -122,12 +125,12 @@
 
   /* Overlay for trending card image */
   .overlay-after {
-    @apply after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50;
+    @apply after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50 after:content-[''];
   }
 
   /* The whole information wrapper (year, category, rating, title) */
   .card-info-wrapper-trending {
-    @apply w-fit h-fit absolute left-4 bottom-4 text-ellipsis truncate z-40;
+    @apply absolute left-4 bottom-4 z-40 h-fit w-fit truncate text-ellipsis;
   }
 
   /* The horizontal scroll for trending section */
@@ -142,7 +145,7 @@
 
   /* Film title */
   .film-title {
-    @apply font-bold text-app-pure-white text-sm capitalize text-ellipsis truncate;
+    @apply truncate text-ellipsis text-sm font-bold capitalize text-app-pure-white;
   }
   .film-title-normal {
     @apply film-title md:heading-xs w-[150px] sm:w-[180px] md:w-[200px] lg:w-[268px];
@@ -152,10 +155,85 @@
   }
 
   .card-collection-wrapper {
-    @apply flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between mb-10;
+    @apply mb-10 flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
   }
 
   .card-hover-animation {
     @apply hover:animate-wiggle hover:even:animate-wiggle-opposite motion-reduce:transition-none motion-reduce:hover:transform-none;
+  }
+
+  /* Loading spinner */
+  /* Reference: https://codepen.io/ivillamil/pen/xxaEdB */
+  .loader {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #cb2025;
+    box-shadow: 30px 0 0 #f8b334;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: #00a096;
+    box-shadow: 30px 0 0 #97bf0d;
+  }
+
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg) scale(0.8);
+      -moz-transform: rotate(0deg) scale(0.8);
+    }
+    50% {
+      -webkit-transform: rotate(360deg) scale(1.2);
+      -moz-transform: rotate(360deg) scale(1.2);
+    }
+    100% {
+      -webkit-transform: rotate(720deg) scale(0.8);
+      -moz-transform: rotate(720deg) scale(0.8);
+    }
+  }
+
+  @keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 #f8b334;
+    }
+    50% {
+      box-shadow: 0 0 0 #f8b334;
+      margin-bottom: 0;
+      -webkit-transform: translate(15px, 15px);
+      -moz-transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #f8b334;
+      margin-bottom: 10px;
+    }
+  }
+
+  @keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #97bf0d;
+    }
+    50% {
+      box-shadow: 0 0 0 #97bf0d;
+      margin-top: -20px;
+      -webkit-transform: translate(15px, 15px);
+      -moz-transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #97bf0d;
+      margin-top: 0;
+    }
   }
 }

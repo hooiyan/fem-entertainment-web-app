@@ -54,3 +54,8 @@ export const sliceArray = (arr, limit) => {
   const sliced = arr.slice(0, limit)
   return sliced
 }
+
+// Search path
+export const searchAll = '/search/all/'
+export const searchMovie = '/search/movie/'
+export const searchTV = '/search/tv/'

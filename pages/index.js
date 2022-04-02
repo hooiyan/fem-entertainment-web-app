@@ -1,6 +1,7 @@
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
+import { searchAll } from '../utils'
 
 export default function Home() {
   const limitNormal = 8
@@ -8,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <SearchBar searchPath="/search/" />
+      <SearchBar searchPath={searchAll} />
       <Collection
         isTrending
         Component={CardTrending}

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import SearchBar from '../../../components/SearchBar'
-import { fetcher } from '../../../utils'
+import { fetcher, searchTV } from '../../../utils'
 
 export default function SearchedTV() {
   const router = useRouter()
@@ -14,7 +14,7 @@ export default function SearchedTV() {
 
   return (
     <>
-      <SearchBar placeholder="Search for TV series" searchPath="/search/tv/" />
+      <SearchBar placeholder="Search for TV series" searchPath={searchTV} />
       {data ? (
         <CollectionSearch
           arr={data ? data.results : []}
