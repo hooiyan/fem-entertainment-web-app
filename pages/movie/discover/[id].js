@@ -1,4 +1,4 @@
-import { getUrl } from '../../lib/tmdb'
+import { getUrl } from '../../../lib/tmdb'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 

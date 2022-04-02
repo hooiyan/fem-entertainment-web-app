@@ -9,7 +9,6 @@ export default function SearchBar({
   searchPath,
 }) {
   const router = useRouter()
-  const [loading, setLoading] = useRecoilState(loadingAtom)
   const [query, setQuery] = useRecoilState(queryAtom)
 
   const handleSearch = e => {
@@ -17,7 +16,7 @@ export default function SearchBar({
     if (query.length === 0) {
       return
     } else {
-      router.push(`${searchPath}${query}`)
+      router.push(`${searchPath}${query.trim()}`)
       setQuery('')
     }
   }

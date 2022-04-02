@@ -2,6 +2,7 @@ import useSWR from 'swr'
 import { fetcher, renderResults, sliceArray } from '../utils'
 import CardNormal from './CardNormal'
 import Heading from './Heading'
+import Loading from './Loading'
 
 export default function Collection({
   Component = CardNormal,
@@ -14,27 +15,34 @@ export default function Collection({
 }) {
   const { data, error } = useSWR(`/api/${endpoint}`, fetcher)
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  if (error) return <div>Error occurred</div>
 
   return (
-    <section
-      className={
-        isTrending
-          ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
-          : null
-      }
-    >
-      <Heading title={title} href={href} />
-      <section
-        className={
-          isTrending
-            ? `h-scroll relative flex overflow-x-scroll 2xs:ml-2 2xs:mt-2`
-            : `card-collection-wrapper`
-        }
-      >
-        {renderResults(sliceArray(data.results, limit), Component, media_type)}
-      </section>
-    </section>
+    <>
+      {data ? (
+        <section
+          className={
+            isTrending
+              ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
+              : null
+          }>
+          <Heading title={title} href={href} />
+          <section
+            className={
+              isTrending
+                ? `h-scroll relative flex overflow-x-scroll 2xs:ml-2 2xs:mt-2`
+                : `card-collection-wrapper`
+            }>
+            {renderResults(
+              sliceArray(data.results, limit),
+              Component,
+              media_type
+            )}
+          </section>
+        </section>
+      ) : (
+        <Loading />
+      )}
+    </>
   )
 }
