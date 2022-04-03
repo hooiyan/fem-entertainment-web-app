@@ -4,6 +4,7 @@ import CardNormal from './CardNormal'
 export default function CollectionSearch({
   arr,
   isGenre,
+  limit = 20,
   media_type = 'movie',
   searchTerm = '',
   totalResult = 0,
@@ -14,7 +15,7 @@ export default function CollectionSearch({
         <h1 className="md:heading-lg mb-6 text-xl font-light">{`Found ${totalResult} results for '${searchTerm}'`}</h1>
       ) : null}
       <section className="card-collection-wrapper">
-        {renderResults(sliceArray(arr, 20), CardNormal, media_type)}
+        {renderResults(sliceArray(arr, limit), CardNormal, media_type)}
       </section>
     </section>
   )

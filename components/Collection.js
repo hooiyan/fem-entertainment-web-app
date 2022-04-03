@@ -13,8 +13,9 @@ export default function Collection({
   limit = 8,
   media_type = 'movie',
   title,
+  url = '',
 }) {
-  const { data, error } = useSWR(`/api/${endpoint}`, fetcher)
+  const { data, error } = useSWR(`/api/${endpoint}` || url, fetcher)
 
   if (error) return <div>Error occurred</div>
 
