@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 // To create a smoother loading effect
 // Reference: https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 export const shimmer = (w, h) => `
@@ -33,7 +35,7 @@ export const renderResults = (array, Component, media_type) => {
 
   return array.map(item => (
     <Component
-      key={item.id}
+      key={uuidv4()}
       category={item.media_type || media_type}
       rating={item.adult}
       src={
