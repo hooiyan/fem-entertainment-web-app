@@ -4,7 +4,7 @@ import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
 import LoadMore from '../../../components/LoadMore'
 import SearchBar from '../../../components/SearchBar'
-import { fetcher, searchTV } from '../../../utils'
+import { fetcher, pathToSearchTV } from '../../../utils'
 
 export default function SearchedTV() {
   const router = useRouter()
@@ -15,7 +15,7 @@ export default function SearchedTV() {
 
   return (
     <>
-      <SearchBar placeholder="Search for TV series" searchPath={searchTV} />
+      <SearchBar placeholder="Search for TV series" searchPath={pathToSearchTV} />
       {data ? (
         <>
           <CollectionSearch

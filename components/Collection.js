@@ -26,7 +26,7 @@ export default function Collection({
           className={
             isTrending
               ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
-              : null
+              : `mb-10`
           }>
           <Heading title={title} href={href} />
           <section

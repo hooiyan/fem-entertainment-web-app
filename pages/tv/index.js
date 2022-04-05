@@ -1,12 +1,12 @@
 import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
 import { genreTV, getUrl } from '../../lib/tmdb'
-import { searchTV } from '../../utils'
+import { pathToSearchTV } from '../../utils'
 
 export default function TV({ data }) {
   return (
     <>
-      <SearchBar placeholder="Search for TV series" searchPath={searchTV} />
+      <SearchBar placeholder="Search for TV series" searchPath={pathToSearchTV} />
       <Genres arr={data.genres} media_type="tv" oddBgColor="odd:bg-teal-700" />
     </>
   )

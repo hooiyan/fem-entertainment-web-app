@@ -155,7 +155,7 @@
   }
 
   .card-collection-wrapper {
-    @apply mb-10 flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
+    @apply flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
   }
 
   .card-hover-animation {

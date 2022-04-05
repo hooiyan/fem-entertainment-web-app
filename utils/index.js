@@ -53,11 +53,10 @@ export const renderResults = (array, Component, media_type) => {
 
 // Slice array
 export const sliceArray = (arr, limit) => {
-  const sliced = arr.slice(0, limit)
-  return sliced
+  return arr.slice(0, limit)
 }
 
 // Search path
-export const searchAll = '/search/all/'
-export const searchMovie = '/search/movie/'
-export const searchTV = '/search/tv/'
+export const pathToSearchAll = '/search/all/'
+export const pathToSearchMovie = '/search/movie/'
+export const pathToSearchTV = '/search/tv/'

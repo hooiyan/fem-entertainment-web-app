@@ -4,7 +4,7 @@ import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
 import LoadMore from '../../../components/LoadMore'
 import SearchBar from '../../../components/SearchBar'
-import { fetcher, searchMovie } from '../../../utils'
+import { fetcher, pathToSearchMovie } from '../../../utils'
 
 export default function SearchedMovie() {
   const router = useRouter()
@@ -15,7 +15,7 @@ export default function SearchedMovie() {
 
   return (
     <>
-      <SearchBar placeholder="Search for movies" searchPath={searchMovie} />
+      <SearchBar placeholder="Search for movies" searchPath={pathToSearchMovie} />
       {data ? (
         <>
           <CollectionSearch
