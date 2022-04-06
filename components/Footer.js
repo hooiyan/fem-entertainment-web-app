@@ -8,8 +8,7 @@ export default function Footer() {
       <a
         href="https://www.themoviedb.org/about/logos-attribution"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         <Image
           src={IconTMDBLong}
           width={150}

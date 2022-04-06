@@ -1,5 +1,18 @@
 import { v4 as uuidv4 } from 'uuid'
 
+// CONSTANTS
+export const TMDB_ENDPOINT = process.env.TMDB_ENDPOINT
+export const TMDB_API_KEY = process.env.TMDB_API_KEY
+export const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
+
+// Search path
+export const pathToSearchAll = '/search/all/'
+export const pathToSearchMovie = '/search/movie/'
+export const pathToSearchTV = '/search/tv/'
+
+// Fetcher for SWR
+export const fetcher = url => fetch(url).then(res => res.json())
+
 // To create a smoother loading effect
 // Reference: https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 export const shimmer = (w, h) => `
@@ -22,20 +35,11 @@ export const toBase64 = str =>
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
 
-// CONSTANTS for environment variables
-export const TMDB_ENDPOINT = process.env.TMDB_ENDPOINT
-export const TMDB_API_KEY = process.env.TMDB_API_KEY
-
-// Fetcher for SWR
-export const fetcher = url => fetch(url).then(res => res.json())
-
 // Render results
 export const renderResults = (array, Component, media_type) => {
-  const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
-
   return array.map(item => (
     <Component
-      key={uuidv4()}
+      key={item.id || uuidv4()}
       category={item.media_type || media_type}
       rating={item.adult}
       src={
@@ -55,8 +59,3 @@ export const renderResults = (array, Component, media_type) => {
 export const sliceArray = (arr, limit) => {
   return arr.slice(0, limit)
 }
-
-// Search path
-export const pathToSearchAll = '/search/all/'
-export const pathToSearchMovie = '/search/movie/'
-export const pathToSearchTV = '/search/tv/'

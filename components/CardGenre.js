@@ -16,5 +16,3 @@ const CardGenre = React.forwardRef(
 
 CardGenre.displayName = 'CardGenre'
 export default CardGenre
-
-// odd:bg-gradient-to-b even:from-app-greyish-blue even:bg-gradient-to-b odd:from-pink-700

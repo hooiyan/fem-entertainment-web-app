@@ -15,7 +15,10 @@ export default function SearchedMovie() {
 
   return (
     <>
-      <SearchBar placeholder="Search for movies" searchPath={pathToSearchMovie} />
+      <SearchBar
+        placeholder="Search for movies"
+        searchPath={pathToSearchMovie}
+      />
       {data ? (
         <>
           <CollectionSearch

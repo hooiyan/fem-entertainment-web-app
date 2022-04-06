@@ -15,7 +15,10 @@ export default function SearchedTV() {
 
   return (
     <>
-      <SearchBar placeholder="Search for TV series" searchPath={pathToSearchTV} />
+      <SearchBar
+        placeholder="Search for TV series"
+        searchPath={pathToSearchTV}
+      />
       {data ? (
         <>
           <CollectionSearch

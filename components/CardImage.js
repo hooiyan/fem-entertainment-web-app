@@ -10,8 +10,7 @@ export default function CardImage({ isTrending, src, title }) {
           isTrending
             ? 'overlay-after image-wrapper-trending'
             : 'image-wrapper-normal'
-        }
-      >
+        }>
         <Image
           className="rounded-lg"
           src={src}

@@ -10,8 +10,7 @@ export default function CardNormal({ category, rating, src, title, year }) {
   return (
     <div
       className="single-card-wrapper-normal card-hover-animation"
-      onClick={handleClick}
-    >
+      onClick={handleClick}>
       <CardImage src={src} />
       <CardInfo category={category} rating={rating} title={title} year={year} />
     </div>

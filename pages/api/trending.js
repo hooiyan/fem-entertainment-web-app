@@ -1,11 +1,6 @@
 import {
   getUrl,
-  trendingAllDay,
-  // trendingAllWeek,
-  // trendingMovieDay,
-  // trendingMovieWeek,
-  // trendingTvDay,
-  // trendingTvWeek,
+  trendingAllDay
 } from '../../lib/tmdb'
 
 export default async function handler(req, res) {

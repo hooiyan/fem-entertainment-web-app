@@ -1,10 +1,10 @@
 import { getTvDetail } from '../../../lib/tmdb'
 
 export default async function handler(req, res) {
-  const { tvId } = req.query
+  const { id } = req.query
 
   try {
-    const response = await fetch(getTvDetail(tvId))
+    const response = await fetch(getTvDetail(id))
     const data = await response.json()
     res.status(200).json(data)
   } catch (err) {
