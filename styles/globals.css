@@ -37,11 +37,11 @@
   }
 
   .heading-section {
-    @apply mb-6 flex items-baseline justify-between;
+    @apply mb-4 sm:mb-6 flex items-end justify-between;
   }
 
   .section-title {
-    @apply md:heading-lg text-xl font-light capitalize;
+    @apply md:heading-lg text-xl font-light capitalize leading-none;
   }
 
   .app-transition {

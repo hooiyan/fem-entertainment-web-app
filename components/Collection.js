@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import { getUrl } from '../lib/tmdb'
 import { fetcher, renderResults, sliceArray } from '../utils'
 import CardNormal from './CardNormal'
 import Heading from './Heading'
@@ -7,15 +8,18 @@ import Loading from './Loading'
 export default function Collection({
   arr,
   Component = CardNormal,
-  endpoint = null,
+  endpoint,
   href = '/movie',
+  isHomePage,
   isTrending,
   limit = 8,
   media_type = 'movie',
   title,
+  type = 'movie',
   url = '',
 }) {
-  const { data, error } = useSWR(`/api/${endpoint}` || url, fetcher)
+  // const { data, error } = useSWR(`/api/${endpoint}` || '', fetcher)
+  const { data, error } = useSWR(getUrl(endpoint) || url, fetcher)
 
   if (error) return <div>Error occurred</div>
 
@@ -26,9 +30,15 @@ export default function Collection({
           className={
             isTrending
               ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
-              : `mb-10`
+              : `mb-6 md:mb-10`
           }>
-          <Heading title={title} href={href} />
+          <Heading
+            title={title}
+            href={href}
+            isHomePage={isHomePage}
+            isTrending={isTrending}
+            media_type={type}
+          />
           <section
             className={
               isTrending

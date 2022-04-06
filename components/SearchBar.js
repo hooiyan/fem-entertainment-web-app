@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { currentPageAtom, queryAtom } from '../lib/recoil-atoms'
+import { useRecoilState } from 'recoil'
+import { queryAtom } from '../lib/recoil-atoms'
 import IconSearch from './icons/IconSearch'
 import SearchButton from './SearchButton'
 
@@ -10,7 +10,6 @@ export default function SearchBar({
 }) {
   const router = useRouter()
   const [query, setQuery] = useRecoilState(queryAtom)
-  const setCurrentPage = useSetRecoilState(currentPageAtom)
 
   const handleSearch = e => {
     e.preventDefault()
@@ -19,7 +18,6 @@ export default function SearchBar({
     } else {
       router.push(`${searchPath}${query.trim()}`)
       setQuery('')
-      setCurrentPage(1)
     }
   }
 

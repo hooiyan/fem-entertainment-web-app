@@ -1,16 +1,15 @@
 import { useRouter } from 'next/router'
-import { useRecoilState } from 'recoil'
+import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
 import Loading from '../../components/Loading'
 import Pagination from '../../components/Pagination'
 import SearchBar from '../../components/SearchBar'
-import { currentPageAtom } from '../../lib/recoil-atoms'
 import { searchAll } from '../../lib/tmdb'
 import { fetcher, pathToSearchAll } from '../../utils'
 
 export default function SearchedAll() {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom)
+  const [currentPage, setCurrentPage] = useState(1)
   const router = useRouter()
   const { id } = router.query
   const url = searchAll(id) + `&page=${currentPage}`

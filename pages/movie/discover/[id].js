@@ -1,15 +1,14 @@
-import { useRecoilState } from 'recoil'
+import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
 import Pagination from '../../../components/Pagination'
 import SearchBar from '../../../components/SearchBar'
-import { currentPageAtom } from '../../../lib/recoil-atoms'
 import { discoverMovie, genreMovie, getUrl } from '../../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../../utils'
 
 export default function GenreMovie({ endpoint, query, result }) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom)
+  const [currentPage, setCurrentPage] = useState(1)
   const url = endpoint + query + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
