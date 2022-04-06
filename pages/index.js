@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <SearchBar searchPath={pathToSearchAll} />
-      
+
       {/* Collection of different groups of movies */}
       <Collection
         isHomePage
@@ -71,7 +71,7 @@ export default function Home() {
         href="/tv/trending"
         limit={limitTrending}
         title="Trending"
-        type="tv"
+        type="tv series"
       />
       <Collection
         isHomePage
@@ -80,25 +80,25 @@ export default function Home() {
         limit={limitNormal}
         media_type="tv"
         title="Popular"
-        type="tv"
+        type="tv series"
       />
       <Collection
         isHomePage
         endpoint={tvAiringToday}
-        href="/tv/airing-today"
+        href="/tv/airing"
         limit={limitNormal}
         media_type="tv"
         title="Airing today"
-        type="tv"
+        type="tv series"
       />
       <Collection
         isHomePage
         endpoint={tvOnTheAir}
-        href="/tv/on-air"
+        href="/tv/onair"
         limit={limitNormal}
         media_type="tv"
         title="On air"
-        type="tv"
+        type="tv series"
       />
       <Collection
         isHomePage
@@ -107,7 +107,7 @@ export default function Home() {
         limit={limitNormal}
         media_type="tv"
         title="Top rated"
-        type="tv"
+        type="tv series"
       />
     </>
   )
