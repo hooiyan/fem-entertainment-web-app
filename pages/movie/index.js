@@ -2,17 +2,15 @@ import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
-import { pageAtom, totalResultAtom } from '../../lib/recoil-atoms'
+import { currentPageAtom } from '../../lib/recoil-atoms'
 import { genreMovie, getUrl } from '../../lib/tmdb'
 import { pathToSearchMovie } from '../../utils'
 
 export default function Movie({ data }) {
-  const setPage = useSetRecoilState(pageAtom)
-  const setTotalResult = useSetRecoilState(totalResultAtom)
+  const setCurrentPage = useSetRecoilState(currentPageAtom)
 
   useEffect(() => {
-    setPage(2)
-    setTotalResult([])
+    setCurrentPage(1)
   })
 
   return (

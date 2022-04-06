@@ -2,23 +2,18 @@ import { useRecoilState } from 'recoil'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
-import LoadMore from '../../../components/LoadMore'
+import Pagination from '../../../components/Pagination'
 import SearchBar from '../../../components/SearchBar'
-import { pageAtom, totalResultAtom } from '../../../lib/recoil-atoms'
+import { currentPageAtom } from '../../../lib/recoil-atoms'
 import { discoverMovie, genreMovie, getUrl } from '../../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../../utils'
 
 export default function Genre({ endpoint, query, result }) {
-  const [currentPage, setCurrentPage] = useRecoilState(pageAtom)
-  const [totalResult, setTotalResult] = useRecoilState(totalResultAtom)
-
-  const url = endpoint + `&page=${currentPage}` + query
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom)
+  const url = endpoint + query + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1)
-    setTotalResult([...totalResult, ...data.results])
-  }
+  const isFirst = currentPage === 1
+  const isLast = currentPage === result.total_pages
 
   return (
     <div>
@@ -27,22 +22,37 @@ export default function Genre({ endpoint, query, result }) {
         searchPath={pathToSearchMovie}
       />
       {result ? (
-        <>
-          <section>
-            <CollectionSearch arr={result.results} isGenre />
-            {data ? (
-              <>
-                <CollectionSearch isGenre arr={totalResult} limit={20001} />
-                <LoadMore onClick={nextPage} />
-              </>
-            ) : (
-              <Loading />
-            )}
-          </section>
-          {data && currentPage === data.total_pages ? (
-            <p>You have reached the end</p>
-          ) : null}
-        </>
+        <section>
+          {data ? (
+            <>
+              <CollectionSearch
+                isGenre
+                arr={data.results || []}
+                limit={99999}
+              />
+              <div style={{ display: 'none' }}>
+                <Pagination
+                  currentPage={currentPage + 1}
+                  isFirst={isFirst}
+                  isLast={isLast}
+                  goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+                  goToNextPage={() => setCurrentPage(currentPage + 1)}
+                  totalPages={result.total_pages}
+                />
+              </div>
+              <Pagination
+                currentPage={currentPage}
+                isFirst={isFirst}
+                isLast={isLast}
+                goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+                goToNextPage={() => setCurrentPage(currentPage + 1)}
+                totalPages={result.total_pages}
+              />
+            </>
+          ) : (
+            <Loading />
+          )}
+        </section>
       ) : (
         <Loading />
       )}
