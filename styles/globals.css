@@ -135,12 +135,17 @@
 
   /* The horizontal scroll for trending section */
   .h-scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
   }
-
   .h-scroll::-webkit-scrollbar {
-    display: none;
+    border-radius: 10px;
+    height: 8px;
+    width: 8px;
+  }
+  .h-scroll::-webkit-scrollbar-thumb:horizontal {
+    background: #5a698f;
+    border-radius: 10px;
   }
 
   /* Film title */
@@ -151,7 +156,7 @@
     @apply film-title md:heading-xs w-[150px] sm:w-[180px] md:w-[200px] lg:w-[268px];
   }
   .film-title-trending {
-    @apply film-title md:heading-sm md:h-6 w-[200px] sm:w-[420px];
+    @apply film-title md:heading-sm w-[200px] sm:w-[420px] md:h-6;
   }
 
   .card-collection-wrapper {
