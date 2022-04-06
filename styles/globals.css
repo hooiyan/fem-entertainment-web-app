@@ -37,7 +37,7 @@
   }
 
   .heading-section {
-    @apply mb-4 sm:mb-6 flex items-end justify-between;
+    @apply mb-4 flex items-end justify-between sm:mb-6;
   }
 
   .section-title {
@@ -151,7 +151,7 @@
     @apply film-title md:heading-xs w-[150px] sm:w-[180px] md:w-[200px] lg:w-[268px];
   }
   .film-title-trending {
-    @apply film-title md:heading-sm md:h-6;
+    @apply film-title md:heading-sm md:h-6 w-[200px] sm:w-[420px];
   }
 
   .card-collection-wrapper {
