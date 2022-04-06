@@ -1,11 +1,22 @@
+import { useRecoilState } from 'recoil'
+import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
-import LoadMore from '../../../components/LoadMore'
+import Pagination from '../../../components/Pagination'
 import SearchBar from '../../../components/SearchBar'
+import { currentPageAtom } from '../../../lib/recoil-atoms'
 import { discoverTV, genreTV, getUrl } from '../../../lib/tmdb'
-import { pathToSearchTV } from '../../../utils'
+import { fetcher, pathToSearchTV } from '../../../utils'
 
-export default function Genre({ data }) {
+export default function GenreTV({ endpoint, query, result }) {
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom)
+  const url = endpoint + query + `&page=${currentPage}`
+  const { data, error } = useSWR(url, fetcher)
+  const isFirst = currentPage === 1
+  const isLast = currentPage === result.total_pages
+
+  // TODO: Error handling
+
   return (
     <div>
       <SearchBar
@@ -13,10 +24,32 @@ export default function Genre({ data }) {
         searchPath={pathToSearchTV}
       />
       {data ? (
-        <section>
-          <CollectionSearch arr={data.results} isGenre media_type="tv" />
-          <LoadMore />
-        </section>
+        <>
+          <CollectionSearch
+            isGenre
+            arr={data.results || []}
+            limit={99999}
+            media_type="tv"
+          />
+          <div style={{ display: 'none' }}>
+            <Pagination
+              currentPage={currentPage + 1}
+              isFirst={isFirst}
+              isLast={isLast}
+              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+              goToNextPage={() => setCurrentPage(currentPage + 1)}
+              totalPages={result.total_pages}
+            />
+          </div>
+          <Pagination
+            currentPage={currentPage}
+            isFirst={isFirst}
+            isLast={isLast}
+            goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+            goToNextPage={() => setCurrentPage(currentPage + 1)}
+            totalPages={result.total_pages}
+          />
+        </>
       ) : (
         <Loading />
       )}
@@ -37,11 +70,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const url = getUrl(discoverTV, `&with_genres=${params.id}`)
+  const genreID = params.id
+  const query = `&with_genres=${genreID}`
+  const endpoint = getUrl(discoverTV)
+  const url = getUrl(discoverTV, query)
   const res = await fetch(url)
-  const data = await res.json()
+  const result = await res.json()
 
   return {
-    props: { data },
+    props: { endpoint, genreID, query, result },
   }
 }

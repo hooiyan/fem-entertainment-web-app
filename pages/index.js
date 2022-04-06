@@ -1,11 +1,19 @@
+import { useEffect } from 'react'
+import { useSetRecoilState } from 'recoil'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
+import { currentPageAtom } from '../lib/recoil-atoms'
 import { pathToSearchAll } from '../utils'
 
 export default function Home() {
+  const setCurrentPage = useSetRecoilState(currentPageAtom)
   const limitNormal = 8
   const limitTrending = 10
+
+  useEffect(() => {
+    setCurrentPage(1)
+  })
 
   return (
     <>

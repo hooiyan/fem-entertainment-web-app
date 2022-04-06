@@ -8,12 +8,14 @@ import { currentPageAtom } from '../../../lib/recoil-atoms'
 import { discoverMovie, genreMovie, getUrl } from '../../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../../utils'
 
-export default function Genre({ endpoint, query, result }) {
+export default function GenreMovie({ endpoint, query, result }) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom)
   const url = endpoint + query + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
   const isLast = currentPage === result.total_pages
+
+  // TODO: Error handling
 
   return (
     <div>
@@ -21,38 +23,28 @@ export default function Genre({ endpoint, query, result }) {
         placeholder="Search for movies"
         searchPath={pathToSearchMovie}
       />
-      {result ? (
-        <section>
-          {data ? (
-            <>
-              <CollectionSearch
-                isGenre
-                arr={data.results || []}
-                limit={99999}
-              />
-              <div style={{ display: 'none' }}>
-                <Pagination
-                  currentPage={currentPage + 1}
-                  isFirst={isFirst}
-                  isLast={isLast}
-                  goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-                  goToNextPage={() => setCurrentPage(currentPage + 1)}
-                  totalPages={result.total_pages}
-                />
-              </div>
-              <Pagination
-                currentPage={currentPage}
-                isFirst={isFirst}
-                isLast={isLast}
-                goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-                goToNextPage={() => setCurrentPage(currentPage + 1)}
-                totalPages={result.total_pages}
-              />
-            </>
-          ) : (
-            <Loading />
-          )}
-        </section>
+      {data ? (
+        <>
+          <CollectionSearch isGenre arr={data.results || []} />
+          <div style={{ display: 'none' }}>
+            <Pagination
+              currentPage={currentPage + 1}
+              isFirst={isFirst}
+              isLast={isLast}
+              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+              goToNextPage={() => setCurrentPage(currentPage + 1)}
+              totalPages={result.total_pages}
+            />
+          </div>
+          <Pagination
+            currentPage={currentPage}
+            isFirst={isFirst}
+            isLast={isLast}
+            goToPreviousPage={() => setCurrentPage(currentPage - 1)}
+            goToNextPage={() => setCurrentPage(currentPage + 1)}
+            totalPages={result.total_pages}
+          />
+        </>
       ) : (
         <Loading />
       )}
