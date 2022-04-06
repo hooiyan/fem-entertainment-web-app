@@ -6,7 +6,7 @@ export const TMDB_API_KEY = process.env.TMDB_API_KEY
 export const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
 
 // Search path
-export const pathToSearchAll = '/search/all/'
+export const pathToSearchAll = '/search/'
 export const pathToSearchMovie = '/search/movie/'
 export const pathToSearchTV = '/search/tv/'
 
