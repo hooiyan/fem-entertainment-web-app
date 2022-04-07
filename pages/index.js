@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
@@ -21,6 +22,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Home</title>
+      </Head>
       <SearchBar searchPath={pathToSearchAll} />
 
       {/* Collection of different groups of movies */}

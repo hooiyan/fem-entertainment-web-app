@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import FilmCasts from '../../components/FilmCasts'
@@ -26,6 +27,9 @@ export default function TV() {
 
   return (
     <>
+      <Head>
+        <title>{tv.name}</title>
+      </Head>
       <SearchBar
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}

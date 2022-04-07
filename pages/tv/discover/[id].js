@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
@@ -23,6 +24,9 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
 
   return (
     <div>
+      <Head>
+        <title>{genreName} Movies</title>
+      </Head>
       <SearchBar
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}

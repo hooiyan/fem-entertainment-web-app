@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useSWR from 'swr'
@@ -26,6 +27,9 @@ export default function SearchedAll() {
 
   return (
     <>
+      <Head>
+        <title>{id} - search results</title>
+      </Head>
       <SearchBar
         placeholder="Search for movies or TV series"
         searchPath={pathToSearchAll}

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import FilmCasts from '../../components/FilmCasts'
@@ -26,6 +27,9 @@ export default function Movie() {
 
   return (
     <>
+      <Head>
+        <title>{movie.title}</title>
+      </Head>
       <SearchBar
         placeholder="Search for movies"
         searchPath={pathToSearchMovie}

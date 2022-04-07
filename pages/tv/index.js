@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
 import { genreTV, getUrl } from '../../lib/tmdb'
@@ -6,6 +7,9 @@ import { pathToSearchTV } from '../../utils'
 export default function TV({ data }) {
   return (
     <>
+      <Head>
+        <title>TV Series</title>
+      </Head>
       <SearchBar
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}
