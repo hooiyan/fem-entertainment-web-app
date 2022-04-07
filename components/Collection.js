@@ -18,7 +18,6 @@ export default function Collection({
   type = 'movie',
   url = '',
 }) {
-  // const { data, error } = useSWR(`/api/${endpoint}` || '', fetcher)
   const { data, error } = useSWR(getUrl(endpoint) || url, fetcher)
 
   if (error) return <div>Error occurred</div>

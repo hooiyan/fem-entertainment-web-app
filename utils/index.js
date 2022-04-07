@@ -40,6 +40,7 @@ export const renderResults = (array, Component, media_type) => {
   return array.map(item => (
     <Component
       key={item.id || uuidv4()}
+      id={item.id}
       category={item.media_type || media_type}
       rating={item.adult}
       src={

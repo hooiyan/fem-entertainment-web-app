@@ -2,6 +2,7 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
 import Loading from '../../components/Loading'
+import PageTitle from '../../components/PageTitle'
 import Pagination from '../../components/Pagination'
 import SearchBar from '../../components/SearchBar'
 import { getUrl, tvOnTheAir } from '../../lib/tmdb'
@@ -20,13 +21,10 @@ export default function NowPlaying() {
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}
       />
+      <PageTitle title="tv series on air" />
       {data ? (
         <>
-          <CollectionSearch
-            isGenre
-            arr={data.results}
-            title="TV series on air"
-          />
+          <CollectionSearch isGenre arr={data.results} />
           <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
