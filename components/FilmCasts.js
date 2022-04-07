@@ -9,7 +9,7 @@ export default function FilmCasts({ casts }) {
           return (
             <li
               key={cast.credit_id}
-              className="mr-2 mb-2 rounded-md border-[1px] py-px px-2 font-medium text-app-pure-white">
+              className="mr-2 mb-2 flex items-center justify-center rounded-md border-[1px] py-px px-2 font-medium text-app-pure-white">
               {cast.name}
             </li>
           )

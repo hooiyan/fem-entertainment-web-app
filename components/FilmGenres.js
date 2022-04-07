@@ -7,7 +7,7 @@ export default function FilmGenres({ genres }) {
           return (
             <li
               key={genre.id}
-              className="mr-2 mb-2 rounded-md border-none bg-app-pure-white py-px px-2 font-medium text-app-dark-blue">
+              className="mr-2 mb-2 flex items-center justify-center rounded-md border-none bg-app-pure-white py-px px-2 text-center font-medium text-app-dark-blue">
               {genre.name}
             </li>
           )
