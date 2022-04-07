@@ -1,6 +1,6 @@
 export default function FilmInfo({ language, length, status, year }) {
   return (
-    <div className="mb-6 flex items-center justify-between text-left text-sm lg:w-3/5">
+    <div className="mb-6 flex items-center justify-between text-left text-sm md:text-lg lg:w-3/5">
       <div>
         <p className="mb-1 text-app-placeholder">Length</p>
         <p className="text-app-pure-white">{length} min.</p>

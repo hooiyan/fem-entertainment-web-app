@@ -1,8 +1,8 @@
 export default function FilmGenres({ genres }) {
   return (
     <div className="mb-6">
-      <h3 className="mb-2">Genres</h3>
-      <ul className="flex text-xs font-light">
+      <h3 className="mb-2 md:text-lg">Genres</h3>
+      <ul className="flex text-xs font-light md:text-sm">
         {genres.map(genre => {
           return (
             <li

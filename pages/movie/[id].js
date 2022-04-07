@@ -21,6 +21,9 @@ export default function Movie() {
   const { data: movie, error: movieError } = useSWR(url, fetcher)
   const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
+  if (movieError) return <div>{movieError}</div>
+  if (!movie) return <div>{movieError}</div>
+
   return (
     <>
       <SearchBar
@@ -33,7 +36,7 @@ export default function Movie() {
           <FilmImage src={movie.poster_path} title={movie.title} />
           <section className="md:w-3/5">
             <FilmHeading tagline={movie.tagline} title={movie.title} />
-            <FilmRating number={movie.vote_average} />
+            <FilmRating number={renderRating(movie.vote_average)} />
             <FilmInfo
               language={renderLanguage(movie.spoken_languages)}
               length={renderLength(movie.runtime)}
@@ -43,7 +46,7 @@ export default function Movie() {
             <FilmGenres genres={movie.genres} />
             <FilmSynopsis synopsis={movie.overview} />
             <FilmCasts casts={credits ? credits.cast : []} />
-            <FilmResources />
+            <FilmResources website={movie.homepage} imdb={movie.imdb_id} />
           </section>
         </section>
       ) : (
@@ -51,6 +54,14 @@ export default function Movie() {
       )}
     </>
   )
+}
+
+function renderRating(rating) {
+  if (rating !== undefined) {
+    return rating.toFixed(1)
+  } else {
+    return 0
+  }
 }
 
 function renderLength(runtime) {
@@ -62,17 +73,17 @@ function renderLength(runtime) {
 }
 
 function renderLanguage(languages) {
-  if (languages.length !== 0) {
-    return languages[0].name
-  } else {
+  if (!languages) {
     return 'Unknown'
+  } else {
+    return languages[0].name
   }
 }
 
 function renderYear(year) {
-  if (year.length !== 0) {
-    return year.substring(0, 4)
-  } else {
+  if (!year) {
     return 'Unknown'
+  } else {
+    return year.substring(0, 4)
   }
 }

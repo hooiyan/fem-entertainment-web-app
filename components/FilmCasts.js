@@ -3,8 +3,8 @@ import React from 'react'
 export default function FilmCasts({ casts }) {
   return (
     <div className="mb-10">
-      <h3 className="mb-2">Casts</h3>
-      <ul className="flex flex-wrap text-xs">
+      <h3 className="mb-2 md:text-lg">Casts</h3>
+      <ul className="flex flex-wrap text-xs md:text-sm">
         {casts.map(cast => {
           return (
             <li
