@@ -37,7 +37,7 @@ export default function TV() {
             <FilmHeading tagline={tv.tagline} title={tv.name} />
             <FilmRating number={renderRating(tv.vote_average)} />
             <FilmInfo
-            media_type='tv'
+              media_type="tv"
               language={renderLanguage(tv.spoken_languages || [])}
               firstAir={tv.first_air_date}
               lastAir={tv.last_air_date}
@@ -58,7 +58,7 @@ export default function TV() {
 
 function renderRating(rating) {
   if (rating !== undefined) {
-    return rating.toFixed(1)
+    return (rating / 2).toFixed(1)
   } else {
     return 0
   }

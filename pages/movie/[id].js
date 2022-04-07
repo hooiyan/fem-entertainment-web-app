@@ -58,7 +58,7 @@ export default function Movie() {
 
 function renderRating(rating) {
   if (rating !== undefined) {
-    return rating.toFixed(1)
+    return (rating / 2).toFixed(1)
   } else {
     return 0
   }
