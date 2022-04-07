@@ -26,7 +26,6 @@ export default function TV() {
 
   return (
     <>
-    {console.log(tv)}
       <SearchBar
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}

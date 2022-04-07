@@ -2,15 +2,20 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
+import PageTitle from '../../../components/PageTitle'
 import Pagination from '../../../components/Pagination'
 import SearchBar from '../../../components/SearchBar'
 import { discoverTV, genreTV, getUrl } from '../../../lib/tmdb'
 import { fetcher, pathToSearchTV } from '../../../utils'
 
-export default function GenreTV({ endpoint, query, result }) {
+export default function GenreTV({ endpoint, genreID, query, result }) {
   const [currentPage, setCurrentPage] = useState(1)
   const url = endpoint + query + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
+  const { data: data2, error: genresError } = useSWR(getUrl(genreTV), fetcher)
+  const genreName = data2
+    ? data2.genres.filter(g => genreID.includes(g.id)).map(g => g.name)[0]
+    : []
   const isFirst = currentPage === 1
   const isLast = currentPage === result.total_pages
 
@@ -22,6 +27,7 @@ export default function GenreTV({ endpoint, query, result }) {
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}
       />
+      <PageTitle title={genreName} />
       {data ? (
         <>
           <CollectionSearch
