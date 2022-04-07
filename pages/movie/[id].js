@@ -73,7 +73,7 @@ function renderLength(runtime) {
 }
 
 function renderLanguage(languages) {
-  if (!languages) {
+  if (!languages && languages.length === 0) {
     return 'Unknown'
   } else {
     return languages[0].name
