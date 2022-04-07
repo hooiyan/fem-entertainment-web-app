@@ -30,7 +30,6 @@ export default function Movie() {
         placeholder="Search for movies"
         searchPath={pathToSearchMovie}
       />
-      {console.log(movie)}
       {movie ? (
         <section className="flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center">
           <FilmImage src={movie.poster_path} title={movie.title} />
@@ -38,7 +37,8 @@ export default function Movie() {
             <FilmHeading tagline={movie.tagline} title={movie.title} />
             <FilmRating number={renderRating(movie.vote_average)} />
             <FilmInfo
-              language={renderLanguage(movie.spoken_languages)}
+              media_type="movie"
+              language={renderLanguage(movie.spoken_languages || [])}
               length={renderLength(movie.runtime)}
               status={movie.status}
               year={renderYear(movie.release_date)}
