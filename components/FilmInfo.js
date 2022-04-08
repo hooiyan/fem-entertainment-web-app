@@ -13,7 +13,7 @@ export default function FilmInfo({
         <div className="mb-6 flex items-center justify-between text-left text-sm lg:w-10/12 lg:text-lg">
           <div>
             <p className="mb-1 text-app-placeholder">Length</p>
-            <p className="text-app-pure-white">{length} min.</p>
+            <p className="text-app-pure-white">{length}</p>
           </div>
           <div>
             <p className="mb-1 text-app-placeholder">Language</p>

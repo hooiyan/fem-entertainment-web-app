@@ -18,6 +18,8 @@ export default function SearchedMovie() {
   const isFirst = currentPage === 1
   const isLast = data ? currentPage === data.total_pages : false
 
+  console.log(data)
+
   // TODO: Error handling
   if (error) return <div>Error occurred</div>
 
@@ -33,7 +35,7 @@ export default function SearchedMovie() {
       {data ? (
         <>
           <CollectionSearch
-            arr={data ? data.results : []}
+            arr={data ? data.results || [] : []}
             searchTerm={id}
             totalResult={data.total_results}
           />

@@ -44,12 +44,12 @@ export default function Movie() {
               media_type="movie"
               language={renderLanguage(movie.spoken_languages || [])}
               length={renderLength(movie.runtime)}
-              status={movie.status}
+              status={renderStatus(movie.status)}
               year={renderYear(movie.release_date)}
             />
             <FilmGenres genres={movie.genres || []} />
             <FilmSynopsis synopsis={movie.overview} />
-            <FilmCasts casts={credits ? credits.cast : []} />
+            <FilmCasts casts={credits ? credits.cast || [] : []} />
             <FilmResources website={movie.homepage} imdb={movie.imdb_id} />
           </section>
         </section>
@@ -69,8 +69,8 @@ export function renderRating(rating) {
 }
 
 function renderLength(runtime) {
-  if (runtime !== 0) {
-    return runtime
+  if (runtime !== 0 && runtime !== undefined) {
+    return runtime + ' min.'
   } else {
     return 'N/A'
   }
@@ -89,5 +89,13 @@ function renderYear(year) {
     return 'N/A'
   } else {
     return year.substring(0, 4)
+  }
+}
+
+export function renderStatus(status) {
+  if (!status) {
+    return 'N/A'
+  } else {
+    return status
   }
 }

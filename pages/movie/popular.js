@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
@@ -17,6 +18,9 @@ export default function Popular() {
 
   return (
     <div>
+      <Head>
+        <title>Popular Movies</title>
+      </Head>
       <SearchBar
         placeholder="Search for movies"
         searchPath={pathToSearchMovie}

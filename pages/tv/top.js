@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
@@ -17,6 +18,9 @@ export default function NowPlaying() {
 
   return (
     <div>
+      <Head>
+        <title>Top Rated TV Series</title>
+      </Head>
       <SearchBar
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}
@@ -24,7 +28,7 @@ export default function NowPlaying() {
       <PageTitle title="top rated tv series" />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} />
+          <CollectionSearch isGenre arr={data.results} media_type="tv" />
           <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
