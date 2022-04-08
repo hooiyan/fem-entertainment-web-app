@@ -25,9 +25,9 @@ export default function Navigation() {
         <NavigationIcon href="/tv">
           <IconNavTv />
         </NavigationIcon>
-        <NavigationIcon href="/bookmark">
+        {/* <NavigationIcon href="/bookmark">
           <IconNavBookmark />
-        </NavigationIcon>
+        </NavigationIcon> */}
       </ul>
       <div className="flex items-center justify-center rounded-full bg-app-pure-white p-px">
         <Image

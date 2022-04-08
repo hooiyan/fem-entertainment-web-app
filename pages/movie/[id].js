@@ -47,7 +47,7 @@ export default function Movie() {
               status={movie.status}
               year={renderYear(movie.release_date)}
             />
-            <FilmGenres genres={movie.genres} />
+            <FilmGenres genres={movie.genres || []} />
             <FilmSynopsis synopsis={movie.overview} />
             <FilmCasts casts={credits ? credits.cast : []} />
             <FilmResources website={movie.homepage} imdb={movie.imdb_id} />
@@ -60,7 +60,7 @@ export default function Movie() {
   )
 }
 
-function renderRating(rating) {
+export function renderRating(rating) {
   if (rating !== undefined) {
     return (rating / 2).toFixed(1)
   } else {
@@ -72,21 +72,21 @@ function renderLength(runtime) {
   if (runtime !== 0) {
     return runtime
   } else {
-    return 'Unknown'
+    return 'N/A'
   }
 }
 
-function renderLanguage(languages) {
-  if (!languages && languages.length === 0) {
-    return 'Unknown'
-  } else {
+export function renderLanguage(languages) {
+  if (languages.length !== 0) {
     return languages[0].name
+  } else {
+    return 'N/A'
   }
 }
 
 function renderYear(year) {
   if (!year) {
-    return 'Unknown'
+    return 'N/A'
   } else {
     return year.substring(0, 4)
   }

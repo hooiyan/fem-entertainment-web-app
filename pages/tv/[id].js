@@ -13,6 +13,7 @@ import Loading from '../../components/Loading'
 import SearchBar from '../../components/SearchBar'
 import { getTvDetail, getUrl } from '../../lib/tmdb'
 import { fetcher, pathToSearchTV } from '../../utils'
+import { renderLanguage, renderRating } from '../movie/[id]'
 
 export default function TV() {
   const router = useRouter()
@@ -34,6 +35,8 @@ export default function TV() {
         placeholder="Search for TV series"
         searchPath={pathToSearchTV}
       />
+      {console.log(tv)}
+      {console.log(tv.spoken_languages)}
       {tv ? (
         <section className="flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center">
           <FilmImage src={tv.poster_path} title={tv.name} />
@@ -47,7 +50,7 @@ export default function TV() {
               lastAir={tv.last_air_date}
               status={tv.status}
             />
-            <FilmGenres genres={tv.genres} />
+            <FilmGenres genres={tv.genres || []} />
             <FilmSynopsis synopsis={tv.overview} />
             <FilmCasts casts={credits ? credits.cast : []} />
             <FilmResources website={tv.homepage} imdb={tv.imdb_id} />
@@ -58,20 +61,4 @@ export default function TV() {
       )}
     </>
   )
-}
-
-function renderRating(rating) {
-  if (rating !== undefined) {
-    return (rating / 2).toFixed(1)
-  } else {
-    return 0
-  }
-}
-
-function renderLanguage(languages) {
-  if (!languages && languages.length === 0) {
-    return 'Unknown'
-  } else {
-    return languages[0].name
-  }
 }
