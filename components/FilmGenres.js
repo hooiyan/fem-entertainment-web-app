@@ -2,7 +2,7 @@ export default function FilmGenres({ genres }) {
   return (
     <div className="mb-6">
       <h3 className="mb-2 md:text-lg">Genres</h3>
-      <ul className="flex text-xs font-light md:text-sm">
+      <ul className="flex flex-wrap text-xs font-light md:text-sm">
         {renderGenres(genres)}
       </ul>
     </div>
