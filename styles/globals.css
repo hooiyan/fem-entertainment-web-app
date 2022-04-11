@@ -251,4 +251,9 @@
       margin-top: 0;
     }
   }
+
+  /* Disable link */
+  .disabled-link {
+    pointer-events: none;
+  }
 }

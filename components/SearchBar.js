@@ -16,7 +16,7 @@ export default function SearchBar({
     if (query.length === 0) {
       return
     } else {
-      router.push(`${searchPath}${query.trim()}`)
+      router.push(`${searchPath}${query.trim()}?page=1`)
       setQuery('')
     }
   }

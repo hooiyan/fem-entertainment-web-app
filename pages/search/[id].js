@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useSWR from 'swr'
@@ -10,17 +11,25 @@ import { searchAll } from '../../lib/tmdb'
 import { fetcher, pathToSearchAll } from '../../utils'
 
 export default function SearchedAll() {
-  const [currentPage, setCurrentPage] = useState(1)
   const router = useRouter()
-  const { id } = router.query
-  const url = searchAll(id) + `&page=${currentPage}`
+  const { id, page } = router.query
+  const [currentPage, setCurrentPage] = useState(Number(page))
+  const url = searchAll(id) + `&page=${page}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
-  const isLast = data ? currentPage === data.total_pages : false
+  const isLast = data ? Number(page) === data.total_pages : false
 
   const filteredResults = data
     ? data.results.filter(item => item.media_type !== 'person')
     : []
+
+  const prevPage = () => {
+    setCurrentPage(currentPage - 1)
+  }
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1)
+  }
 
   // TODO: Error handling
   if (error) return <div>Error occurred</div>
@@ -28,7 +37,7 @@ export default function SearchedAll() {
   return (
     <>
       <Head>
-        <title>{id} - search results</title>
+        <title>{id} - Search Results | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for movies or TV series"
@@ -43,20 +52,34 @@ export default function SearchedAll() {
           />
           <div style={{ display: 'none' }}>
             <Pagination
-              currentPage={currentPage + 1}
+              currentPage={Number(page) + 1}
+              prevHref={`${pathToSearchAll}${id}?page=${currentPage - 1}`}
+              nextHref={`${pathToSearchAll}${id}?page=${currentPage + 1}`}
               isFirst={isFirst}
               isLast={isLast}
-              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-              goToNextPage={() => setCurrentPage(currentPage + 1)}
+              goToPreviousPage={prevPage}
+              goToNextPage={nextPage}
               totalPages={data.total_pages}
             />
           </div>
+          {/* <Link
+            href={`${pathToSearchAll}${id}?page=${currentPage - 1}`}
+            as={`${pathToSearchAll}${id}?page=${currentPage - 1}`}>
+            <a onClick={prevPage}>Previous page</a>
+          </Link>
+          <Link
+            href={`${pathToSearchAll}${id}?page=${currentPage + 1}`}
+            as={`${pathToSearchAll}${id}?page=${currentPage + 1}`}>
+            <a onClick={nextPage}>Next page</a>
+          </Link> */}
           <Pagination
-            currentPage={currentPage}
+            currentPage={Number(page)}
+            prevHref={`${pathToSearchAll}${id}?page=${currentPage - 1}`}
+            nextHref={`${pathToSearchAll}${id}?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
-            goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-            goToNextPage={() => setCurrentPage(currentPage + 1)}
+            goToPreviousPage={prevPage}
+            goToNextPage={nextPage}
             totalPages={data.total_pages}
           />
         </>

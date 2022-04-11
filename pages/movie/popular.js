@@ -29,7 +29,7 @@ export default function Popular() {
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />
-          <div style={{ display: 'none' }}>
+          {/* <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
               isFirst={isFirst}
@@ -46,7 +46,7 @@ export default function Popular() {
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={data.total_pages}
-          />
+          /> */}
         </>
       ) : (
         <Loading />

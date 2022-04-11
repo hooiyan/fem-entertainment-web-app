@@ -24,7 +24,7 @@ export default function SearchedTV() {
   return (
     <>
       <Head>
-        <title>{id} - search results</title>
+        <title>{id} - Search Results | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for TV series"
@@ -38,7 +38,7 @@ export default function SearchedTV() {
             searchTerm={id}
             totalResult={data.total_results}
           />
-          <div style={{ display: 'none' }}>
+          {/* <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
               isFirst={isFirst}
@@ -55,7 +55,7 @@ export default function SearchedTV() {
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={data.total_pages}
-          />
+          /> */}
         </>
       ) : (
         <Loading />

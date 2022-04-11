@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Home | Entertainment App</title>
       </Head>
       <SearchBar searchPath={pathToSearchAll} />
 
@@ -33,35 +33,35 @@ export default function Home() {
         isTrending
         Component={CardTrending}
         endpoint={trendingMovieDay}
-        href="/movie/trending"
+        href="/movie/trending?page=1"
         limit={limitTrending}
         title="Trending"
       />
       <Collection
         isHomePage
         endpoint={moviePopular}
-        href="/movie/popular"
+        href="/movie/popular?page=1"
         limit={limitNormal}
         title="Popular"
       />
       <Collection
         isHomePage
         endpoint={movieNowPlaying}
-        href="/movie/now"
+        href="/movie/now?page=1"
         limit={limitNormal}
         title="Now playing"
       />
       <Collection
         isHomePage
         endpoint={movieUpcoming}
-        href="/movie/upcoming"
+        href="/movie/upcoming?page=1"
         limit={limitNormal}
         title="Upcoming"
       />
       <Collection
         isHomePage
         endpoint={movieTopRated}
-        href="/movie/top"
+        href="/movie/top?page=1"
         limit={limitNormal}
         title="Top rated"
       />
@@ -72,7 +72,7 @@ export default function Home() {
         isTrending
         Component={CardTrending}
         endpoint={trendingTvDay}
-        href="/tv/trending"
+        href="/tv/trending?page=1"
         limit={limitTrending}
         title="Trending"
         type="tv series"
@@ -80,7 +80,7 @@ export default function Home() {
       <Collection
         isHomePage
         endpoint={tvPopular}
-        href="/tv/popular"
+        href="/tv/popular?page=1"
         limit={limitNormal}
         media_type="tv"
         title="Popular"
@@ -89,7 +89,7 @@ export default function Home() {
       <Collection
         isHomePage
         endpoint={tvAiringToday}
-        href="/tv/airing"
+        href="/tv/airing?page=1"
         limit={limitNormal}
         media_type="tv"
         title="Airing today"
@@ -98,16 +98,16 @@ export default function Home() {
       <Collection
         isHomePage
         endpoint={tvOnTheAir}
-        href="/tv/onair"
+        href="/tv/onair?page=1"
         limit={limitNormal}
-        media_type="tv"
+        media_type="tv?page=1"
         title="On air"
         type="tv series"
       />
       <Collection
         isHomePage
         endpoint={tvTopRated}
-        href="/tv/top"
+        href="/tv/top?page=1"
         limit={limitNormal}
         media_type="tv"
         title="Top rated"

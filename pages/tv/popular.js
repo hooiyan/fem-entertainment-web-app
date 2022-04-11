@@ -29,7 +29,7 @@ export default function NowPlaying() {
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} media_type="tv" />
-          <div style={{ display: 'none' }}>
+          {/* <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
               isFirst={isFirst}
@@ -46,7 +46,7 @@ export default function NowPlaying() {
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={data.total_pages}
-          />
+          /> */}
         </>
       ) : (
         <Loading />

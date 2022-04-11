@@ -40,7 +40,7 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
             limit={99999}
             media_type="tv"
           />
-          <div style={{ display: 'none' }}>
+          {/* <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
               isFirst={isFirst}
@@ -57,7 +57,7 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={result.total_pages}
-          />
+          /> */}
         </>
       ) : (
         <Loading />

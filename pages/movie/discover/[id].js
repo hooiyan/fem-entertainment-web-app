@@ -38,7 +38,7 @@ export default function GenreMovie({ endpoint, genreID, query, result }) {
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results || []} />
-          <div style={{ display: 'none' }}>
+          {/* <div style={{ display: 'none' }}>
             <Pagination
               currentPage={currentPage + 1}
               isFirst={isFirst}
@@ -55,7 +55,7 @@ export default function GenreMovie({ endpoint, genreID, query, result }) {
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={result.total_pages}
-          />
+          /> */}
         </>
       ) : (
         <Loading />
