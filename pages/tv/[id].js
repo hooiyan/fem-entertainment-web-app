@@ -29,7 +29,7 @@ export default function TV() {
   return (
     <>
       <Head>
-        <title>{tv.name}</title>
+        <title>{tv.name} | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for TV series"

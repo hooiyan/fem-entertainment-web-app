@@ -33,7 +33,7 @@ export default function Trending() {
   return (
     <div>
       <Head>
-        <title>Trending Movies</title>
+        <title>Trending Movies | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for movies"

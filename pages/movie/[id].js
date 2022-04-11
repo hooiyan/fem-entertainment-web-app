@@ -28,7 +28,7 @@ export default function Movie() {
   return (
     <>
       <Head>
-        <title>{movie.title}</title>
+        <title>{movie.title} | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for movies"

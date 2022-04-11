@@ -19,7 +19,7 @@ export default function NowPlaying() {
   return (
     <div>
       <Head>
-        <title>Now Playing Movies</title>
+        <title>Now Playing Movies | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for movies"
