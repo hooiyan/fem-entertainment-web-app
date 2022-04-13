@@ -73,7 +73,8 @@
 
   /* Category wrapper (Category icon & Category text) */
   .card-info-category-2in1 {
-    @apply flex items-center before:content-['•'] after:content-['•'];
+    /* @apply flex items-center before:content-['•'] after:content-['•']; */
+    @apply flex items-center before:content-['•'];
   }
   .card-info-category-2in1-normal {
     @apply card-info-category-2in1 px-[6px];

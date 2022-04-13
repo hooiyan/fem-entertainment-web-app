@@ -46,7 +46,7 @@ export default function CardInfo({
             {renderCategoryText}
           </p>
         </div>
-        <p>{renderRating}</p>
+        {/* <p>{renderRating}</p> */}
       </div>
       <h2 className={isTrending ? 'film-title-trending' : 'film-title-normal'}>
         {title}
