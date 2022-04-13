@@ -4,15 +4,15 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
-import Pagination from '../../../components/Pagination'
+import PaginationImproved from '../../../components/PaginationImproved'
 import SearchBar from '../../../components/SearchBar'
 import { searchTv } from '../../../lib/tmdb'
 import { fetcher, pathToSearchTV } from '../../../utils'
 
 export default function SearchedTV() {
-  const [currentPage, setCurrentPage] = useState(1)
   const router = useRouter()
-  const { id } = router.query
+  const { id, page } = router.query
+  const [currentPage, setCurrentPage] = useState(Number(page))
   const url = searchTv(id) + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
@@ -38,24 +38,17 @@ export default function SearchedTV() {
             searchTerm={id}
             totalResult={data.total_results}
           />
-          {/* <div style={{ display: 'none' }}>
-            <Pagination
-              currentPage={currentPage + 1}
-              isFirst={isFirst}
-              isLast={isLast}
-              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-              goToNextPage={() => setCurrentPage(currentPage + 1)}
-              totalPages={data.total_pages}
-            />
-          </div>
-          <Pagination
+          <PaginationImproved
+            currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
+            prevHref={`${pathToSearchTV}${id}?page=${currentPage - 1}`}
+            nextHref={`${pathToSearchTV}${id}?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={data.total_pages}
-          /> */}
+          />
         </>
       ) : (
         <Loading />

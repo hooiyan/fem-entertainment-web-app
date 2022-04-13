@@ -1,16 +1,19 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
 import Loading from '../../components/Loading'
 import PageTitle from '../../components/PageTitle'
-import Pagination from '../../components/Pagination'
+import PaginationImproved from '../../components/PaginationImproved'
 import SearchBar from '../../components/SearchBar'
 import { getUrl, movieNowPlaying } from '../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../utils'
 
-export default function NowPlaying() {
-  const [currentPage, setCurrentPage] = useState(1)
+export default function NowPlayingMovies() {
+  const router = useRouter()
+  const { page } = router.query
+  const [currentPage, setCurrentPage] = useState(Number(page))
   const url = getUrl(movieNowPlaying) + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
@@ -29,24 +32,17 @@ export default function NowPlaying() {
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />
-          {/* <div style={{ display: 'none' }}>
-            <Pagination
-              currentPage={currentPage + 1}
-              isFirst={isFirst}
-              isLast={isLast}
-              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-              goToNextPage={() => setCurrentPage(currentPage + 1)}
-              totalPages={data.total_pages}
-            />
-          </div>
-          <Pagination
+          <PaginationImproved
+            currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
+            prevHref={`/movie/now?page=${currentPage - 1}`}
+            nextHref={`/movie/now?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
             totalPages={data.total_pages}
-          /> */}
+          />
         </>
       ) : (
         <Loading />

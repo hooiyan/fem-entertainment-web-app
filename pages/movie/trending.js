@@ -5,30 +5,19 @@ import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
 import Loading from '../../components/Loading'
 import PageTitle from '../../components/PageTitle'
-import Pagination from '../../components/Pagination'
+import PaginationImproved from '../../components/PaginationImproved'
 import SearchBar from '../../components/SearchBar'
 import { getUrl, trendingMovieDay } from '../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../utils'
 
-export default function Trending() {
+export default function TrendingMovies() {
   const router = useRouter()
   const { page } = router.query
   const [currentPage, setCurrentPage] = useState(Number(page))
-  const url = getUrl(trendingMovieDay) + `&page=${page}`
+  const url = getUrl(trendingMovieDay) + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const isFirst = currentPage === 1
-  const isLast = data ? Number(page) === data.total_pages : false
-
-  console.log(data);
-  console.log(page);
-
-  const prevPage = () => {
-    setCurrentPage(currentPage - 1)
-  }
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1)
-  }
+  const isLast = data ? currentPage === data.total_pages : false
 
   return (
     <div>
@@ -43,22 +32,11 @@ export default function Trending() {
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />
-          <div style={{ display: 'none' }}>
-            <Pagination
-              currentPage={Number(page) + 1}
-              prevHref={`${pathToSearchMovie}trending?page=${currentPage - 1}`}
-              nextHref={`${pathToSearchMovie}trending?page=${currentPage + 1}`}
-              isFirst={isFirst}
-              isLast={isLast}
-              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-              goToNextPage={() => setCurrentPage(currentPage + 1)}
-              totalPages={data.total_pages}
-            />
-          </div>
-          <Pagination
-            currentPage={Number(page)}
-            prevHref={`${pathToSearchMovie}trending?page=${currentPage - 1}`}
-            nextHref={`${pathToSearchMovie}trending?page=${currentPage + 1}`}
+          <PaginationImproved
+            currentPageAdvance={currentPage + 1}
+            currentPage={currentPage}
+            prevHref={`/movie/trending?page=${currentPage - 1}`}
+            nextHref={`/movie/trending?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
