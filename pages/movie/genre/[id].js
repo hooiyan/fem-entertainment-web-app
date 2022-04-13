@@ -31,7 +31,7 @@ export default function GenreMovie({ endpoint, genreID, query, result }) {
   return (
     <div>
       <Head>
-        <title>{genreName} Movies | Entertainment App</title>
+        <title>{genreName} - Movies | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for movies"

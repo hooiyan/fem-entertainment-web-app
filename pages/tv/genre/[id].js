@@ -28,7 +28,7 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
   return (
     <div>
       <Head>
-        <title>{genreName} Movies | Entertainment App</title>
+        <title>{genreName} - TV Series | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder="Search for TV series"
