@@ -7,7 +7,7 @@ export default function Genres({ arr, media_type, oddBgColor }) {
       {arr.map(genre => (
         <Link
           key={genre.id}
-          href={`/${media_type}/genre/${genre.id}`}
+          href={`/${media_type}/genre/${genre.id}?page=1`}
           passHref>
           <CardGenre oddBgColor={oddBgColor} text={genre.name} />
         </Link>

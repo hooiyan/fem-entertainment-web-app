@@ -1,16 +1,19 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import useSWR from 'swr'
 import CollectionSearch from '../../../components/CollectionSearch'
 import Loading from '../../../components/Loading'
 import PageTitle from '../../../components/PageTitle'
-import Pagination from '../../../components/Pagination'
+import PaginationImproved from '../../../components/PaginationImproved'
 import SearchBar from '../../../components/SearchBar'
 import { discoverTV, genreTV, getUrl } from '../../../lib/tmdb'
 import { fetcher, pathToSearchTV } from '../../../utils'
 
 export default function GenreTV({ endpoint, genreID, query, result }) {
-  const [currentPage, setCurrentPage] = useState(1)
+  const router = useRouter()
+  const { page } = router.query
+  const [currentPage, setCurrentPage] = useState(Number(page))
   const url = endpoint + query + `&page=${currentPage}`
   const { data, error } = useSWR(url, fetcher)
   const { data: data2, error: genresError } = useSWR(getUrl(genreTV), fetcher)
@@ -40,24 +43,17 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
             limit={99999}
             media_type="tv"
           />
-          {/* <div style={{ display: 'none' }}>
-            <Pagination
-              currentPage={currentPage + 1}
-              isFirst={isFirst}
-              isLast={isLast}
-              goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-              goToNextPage={() => setCurrentPage(currentPage + 1)}
-              totalPages={result.total_pages}
-            />
-          </div>
-          <Pagination
+          <PaginationImproved
+            currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
+            prevHref={`/tv/genre/${genreID}?page=${currentPage - 1}`}
+            nextHref={`/tv/genre/${genreID}?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => setCurrentPage(currentPage - 1)}
             goToNextPage={() => setCurrentPage(currentPage + 1)}
-            totalPages={result.total_pages}
-          /> */}
+            totalPages={data.total_pages}
+          />
         </>
       ) : (
         <Loading />
