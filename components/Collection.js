@@ -41,7 +41,7 @@ export default function Collection({
           <section
             className={
               isTrending
-                ? `h-scroll relative flex overflow-x-scroll 2xs:ml-2 2xs:mt-2`
+                ? `h-scroll relative flex gap-x-4 overflow-x-scroll sm:gap-x-10 2xs:mt-2`
                 : `card-collection-wrapper`
             }>
             {renderResults(

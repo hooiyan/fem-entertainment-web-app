@@ -117,10 +117,10 @@
     @apply w-full;
   }
   .single-card-wrapper-normal {
-    @apply single-card-wrapper mb-4 grow basis-1/5 2xs:m-2 2xs:w-[130px] xs:w-full;
+    @apply single-card-wrapper mb-4 grow basis-1/5 2xs:w-[130px] xs:w-full;
   }
   .single-card-wrapper-trending {
-    @apply single-card-wrapper relative mr-4 last:mr-0 sm:mr-6 md:mr-10;
+    @apply single-card-wrapper relative;
   }
 
   /* Overlay for trending card image */
@@ -160,7 +160,7 @@
   }
 
   .card-collection-wrapper {
-    @apply flex flex-col items-center 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
+    @apply flex flex-col items-center gap-4 sm:gap-x-7 sm:gap-y-6 xl:gap-x-10 xl:gap-y-8 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
   }
 
   .card-hover-animation {
