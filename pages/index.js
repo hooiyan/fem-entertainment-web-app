@@ -100,7 +100,7 @@ export default function Home() {
         endpoint={tvOnTheAir}
         href="/tv/onair?page=1"
         limit={limitNormal}
-        media_type="tv?page=1"
+        media_type="tv"
         title="On air"
         type="tv series"
       />
