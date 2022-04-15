@@ -31,7 +31,7 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
         <title>{genreName} - TV Series | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
       <PageTitle title={genreName} />
@@ -41,7 +41,7 @@ export default function GenreTV({ endpoint, genreID, query, result }) {
             isGenre
             arr={data.results || []}
             limit={99999}
-            media_type="tv"
+            media_type='tv'
           />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}

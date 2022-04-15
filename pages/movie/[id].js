@@ -31,17 +31,17 @@ export default function Movie() {
         <title>{movie.title} | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
       {movie ? (
-        <section className="flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center">
+        <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
           <FilmImage src={movie.poster_path} title={movie.title} />
-          <section className="md:w-3/5">
+          <section className='md:w-3/5'>
             <FilmHeading tagline={movie.tagline} title={movie.title} />
             <FilmRating number={renderRating(movie.vote_average)} />
             <FilmInfo
-              media_type="movie"
+              media_type='movie'
               language={renderLanguage(movie.spoken_languages || [])}
               length={renderLength(movie.runtime)}
               status={renderStatus(movie.status)}

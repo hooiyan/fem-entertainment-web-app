@@ -25,10 +25,10 @@ export default function TopRatedMovies() {
         <title>Top Rated Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
-      <PageTitle title="top rated movies" />
+      <PageTitle title='top rated movies' />
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />

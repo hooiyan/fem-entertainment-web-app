@@ -25,13 +25,13 @@ export default function AiringTV() {
         <title>TV Airing Today</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
-      <PageTitle title="tv series airing today" />
+      <PageTitle title='tv series airing today' />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} media_type="tv" />
+          <CollectionSearch isGenre arr={data.results} media_type='tv' />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}

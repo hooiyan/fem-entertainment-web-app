@@ -27,14 +27,14 @@ export default function SearchedTV() {
         <title>{id} - Search Results | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
       {data ? (
         <>
           <CollectionSearch
             arr={data ? data.results : []}
-            media_type="tv"
+            media_type='tv'
             searchTerm={id}
             totalResult={data.total_results}
           />

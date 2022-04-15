@@ -25,13 +25,13 @@ export default function OnAirTV() {
         <title>TV On Air</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
-      <PageTitle title="tv series on air" />
+      <PageTitle title='tv series on air' />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} media_type="tv" />
+          <CollectionSearch isGenre arr={data.results} media_type='tv' />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}

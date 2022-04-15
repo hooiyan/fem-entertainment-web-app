@@ -29,7 +29,7 @@ export default function SearchedMovie() {
         <title>{id} - Search Results | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
       {data ? (

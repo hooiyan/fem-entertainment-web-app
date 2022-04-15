@@ -28,9 +28,10 @@ export default function Collection({
         <section
           className={
             isTrending
-              ? `mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible`
-              : `mb-6 md:mb-10`
-          }>
+              ? 'mb-6 h-full w-full overflow-hidden md:mb-10 lg:overflow-visible'
+              : 'mb-6 md:mb-10'
+          }
+        >
           <Heading
             title={title}
             href={href}
@@ -41,9 +42,10 @@ export default function Collection({
           <section
             className={
               isTrending
-                ? `h-scroll relative flex gap-x-4 overflow-x-scroll sm:gap-x-10 2xs:mt-2`
-                : `card-collection-wrapper`
-            }>
+                ? 'h-scroll relative flex gap-x-4 overflow-x-scroll sm:gap-x-10 2xs:mt-2'
+                : 'card-collection-wrapper'
+            }
+          >
             {renderResults(
               sliceArray(data.results || arr, limit),
               Component,

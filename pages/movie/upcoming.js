@@ -25,10 +25,10 @@ export default function UpcomingMovies() {
         <title>Upcoming Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
-      <PageTitle title="upcoming movies" />
+      <PageTitle title='upcoming movies' />
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />

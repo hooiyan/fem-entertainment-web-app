@@ -25,10 +25,10 @@ export default function NowPlayingMovies() {
         <title>Now Playing Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
-      <PageTitle title="now playing movies" />
+      <PageTitle title='now playing movies' />
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />

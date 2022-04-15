@@ -25,13 +25,13 @@ export default function PopularTV() {
         <title>Popular TV Series</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
-      <PageTitle title="popular tv series" />
+      <PageTitle title='popular tv series' />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} media_type="tv" />
+          <CollectionSearch isGenre arr={data.results} media_type='tv' />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}

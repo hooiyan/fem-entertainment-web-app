@@ -21,7 +21,7 @@ export default function CardTrending({
   }
 
   return (
-    <div className="single-card-wrapper-trending" onClick={handleClick}>
+    <div className='relative w-full' onClick={handleClick}>
       <CardImage isTrending src={src} />
       <CardInfo
         isTrending

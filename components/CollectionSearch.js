@@ -12,9 +12,9 @@ export default function CollectionSearch({
   return (
     <>
       {!isGenre ? (
-        <h1 className="md:heading-lg mb-6 text-xl font-light lg:mb-8">{`Found ${totalResult} results for '${searchTerm}'`}</h1>
+        <h1 className='md:heading-lg mb-6 text-xl font-light lg:mb-8'>{`Found ${totalResult} results for '${searchTerm}'`}</h1>
       ) : null}
-      <section className="card-collection-wrapper">
+      <section className='card-collection-wrapper'>
         {renderResults(sliceArray(arr, limit), CardNormal, media_type)}
       </section>
     </>

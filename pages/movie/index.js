@@ -11,13 +11,13 @@ export default function Movie({ data }) {
         <title>Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
       <Genres
         arr={data.genres}
-        media_type="movie"
-        oddBgColor="odd:bg-cyan-700"
+        media_type='movie'
+        oddBgColor='odd:bg-cyan-700'
       />
     </>
   )

@@ -34,7 +34,7 @@ export default function GenreMovie({ endpoint, genreID, query, result }) {
         <title>{genreName} - Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
       <PageTitle title={genreName} />

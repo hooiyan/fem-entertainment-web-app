@@ -33,37 +33,37 @@ export default function Home() {
         isTrending
         Component={CardTrending}
         endpoint={trendingMovieDay}
-        href="/movie/trending?page=1"
+        href='/movie/trending?page=1'
         limit={limitTrending}
-        title="Trending"
+        title='Trending'
       />
       <Collection
         isHomePage
         endpoint={moviePopular}
-        href="/movie/popular?page=1"
+        href='/movie/popular?page=1'
         limit={limitNormal}
-        title="Popular"
+        title='Popular'
       />
       <Collection
         isHomePage
         endpoint={movieNowPlaying}
-        href="/movie/now?page=1"
+        href='/movie/now?page=1'
         limit={limitNormal}
-        title="Now playing"
+        title='Now playing'
       />
       <Collection
         isHomePage
         endpoint={movieUpcoming}
-        href="/movie/upcoming?page=1"
+        href='/movie/upcoming?page=1'
         limit={limitNormal}
-        title="Upcoming"
+        title='Upcoming'
       />
       <Collection
         isHomePage
         endpoint={movieTopRated}
-        href="/movie/top?page=1"
+        href='/movie/top?page=1'
         limit={limitNormal}
-        title="Top rated"
+        title='Top rated'
       />
 
       {/* Collection of different groups of tv series */}
@@ -72,46 +72,46 @@ export default function Home() {
         isTrending
         Component={CardTrending}
         endpoint={trendingTvDay}
-        href="/tv/trending?page=1"
+        href='/tv/trending?page=1'
         limit={limitTrending}
-        title="Trending"
-        type="tv series"
+        title='Trending'
+        type='tv series'
       />
       <Collection
         isHomePage
         endpoint={tvPopular}
-        href="/tv/popular?page=1"
+        href='/tv/popular?page=1'
         limit={limitNormal}
-        media_type="tv"
-        title="Popular"
-        type="tv series"
+        media_type='tv'
+        title='Popular'
+        type='tv series'
       />
       <Collection
         isHomePage
         endpoint={tvAiringToday}
-        href="/tv/airing?page=1"
+        href='/tv/airing?page=1'
         limit={limitNormal}
-        media_type="tv"
-        title="Airing today"
-        type="tv series"
+        media_type='tv'
+        title='Airing today'
+        type='tv series'
       />
       <Collection
         isHomePage
         endpoint={tvOnTheAir}
-        href="/tv/onair?page=1"
+        href='/tv/onair?page=1'
         limit={limitNormal}
-        media_type="tv"
-        title="On air"
-        type="tv series"
+        media_type='tv'
+        title='On air'
+        type='tv series'
       />
       <Collection
         isHomePage
         endpoint={tvTopRated}
-        href="/tv/top?page=1"
+        href='/tv/top?page=1'
         limit={limitNormal}
-        media_type="tv"
-        title="Top rated"
-        type="tv series"
+        media_type='tv'
+        title='Top rated'
+        type='tv series'
       />
     </>
   )

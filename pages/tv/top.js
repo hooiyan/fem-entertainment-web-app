@@ -25,13 +25,13 @@ export default function TopRatedTV() {
         <title>Top Rated TV Series</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
-      <PageTitle title="top rated tv series" />
+      <PageTitle title='top rated tv series' />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} media_type="tv" />
+          <CollectionSearch isGenre arr={data.results} media_type='tv' />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}

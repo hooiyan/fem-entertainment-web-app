@@ -31,7 +31,7 @@ export default function SearchedAll() {
         <title>{id} - Search Results | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies or TV series"
+        placeholder='Search for movies or TV series'
         searchPath={pathToSearchAll}
       />
       {data ? (

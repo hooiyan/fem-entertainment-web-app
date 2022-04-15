@@ -11,10 +11,10 @@ export default function TV({ data }) {
         <title>TV Series | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
-      <Genres arr={data.genres} media_type="tv" oddBgColor="odd:bg-teal-700" />
+      <Genres arr={data.genres} media_type='tv' oddBgColor='odd:bg-teal-700' />
     </>
   )
 }

@@ -8,10 +8,10 @@ export default function Heading({
   title,
 }) {
   return (
-    <div className="heading-section">
+    <div className='mb-4 flex items-end justify-between sm:mb-6'>
       {isHomePage ? (
-        <div className="flex items-end">
-          <h2 className="section-title py-px sm:py-0">{title}</h2>
+        <div className='flex items-end'>
+          <h2 className='section-title py-px sm:py-0'>{title}</h2>
           <p
             className={
               media_type === 'movie'
@@ -22,10 +22,10 @@ export default function Heading({
           </p>
         </div>
       ) : (
-        <h2 className="section-title">{title}</h2>
+        <h2 className='section-title'>{title}</h2>
       )}
       <Link href={href} passHref>
-        <span className="app-transition cursor-pointer text-xs font-medium uppercase tracking-wide text-app-greyish-blue hover:underline">
+        <span className='cursor-pointer text-xs font-medium uppercase tracking-wide text-app-greyish-blue hover:underline'>
           See more
         </span>
       </Link>

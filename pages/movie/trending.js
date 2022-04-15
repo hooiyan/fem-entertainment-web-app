@@ -25,10 +25,10 @@ export default function TrendingMovies() {
         <title>Trending Movies | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for movies"
+        placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
-      <PageTitle title="trending movies" />
+      <PageTitle title='trending movies' />
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />

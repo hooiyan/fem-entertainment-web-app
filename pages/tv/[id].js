@@ -32,17 +32,17 @@ export default function TV() {
         <title>{tv.name} | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder="Search for TV series"
+        placeholder='Search for TV series'
         searchPath={pathToSearchTV}
       />
       {tv ? (
-        <section className="flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center">
+        <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
           <FilmImage src={tv.poster_path} title={tv.name} />
-          <section className="md:w-3/5">
+          <section className='md:w-3/5'>
             <FilmHeading tagline={tv.tagline} title={tv.name} />
             <FilmRating number={renderRating(tv.vote_average)} />
             <FilmInfo
-              media_type="tv"
+              media_type='tv'
               language={renderLanguage(tv.spoken_languages || [])}
               firstAir={tv.first_air_date}
               lastAir={tv.last_air_date}
