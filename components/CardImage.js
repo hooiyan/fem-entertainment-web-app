@@ -8,7 +8,7 @@ export default function CardImage({ isTrending, src, title }) {
         className={
           isTrending
             ? 'relative h-[140px] w-[240px] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50 after:content-[""] sm:h-[230px] sm:w-[470px]'
-            : 'h-[133px] md:h-[140px] lg:h-[174px]'
+            : 'relative h-[133px] md:h-[140px] lg:h-[174px]'
         }>
         <Image
           className='rounded-lg'
