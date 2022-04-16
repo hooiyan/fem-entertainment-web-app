@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
-import { genreMovie, getUrl } from '../../lib/tmdb'
+import { genreMovie, getGenre, getUrl } from '../../lib/tmdb'
 import { pathToSearchMovie } from '../../utils'
 
 export default function Movie({ data }) {
@@ -24,9 +24,9 @@ export default function Movie({ data }) {
 }
 
 export async function getStaticProps() {
-  const url = getUrl(genreMovie)
-  const res = await fetch(url)
-  const data = await res.json()
+  const url = getGenre(genreMovie)
+  const response = await fetch(url)
+  const data = await response.json()
 
   return {
     props: {

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Genres from '../../components/Genres'
 import SearchBar from '../../components/SearchBar'
-import { genreTV, getUrl } from '../../lib/tmdb'
+import { genreTV, getGenre } from '../../lib/tmdb'
 import { pathToSearchTV } from '../../utils'
 
 export default function TV({ data }) {
@@ -20,9 +20,9 @@ export default function TV({ data }) {
 }
 
 export async function getStaticProps() {
-  const url = getUrl(genreTV)
-  const res = await fetch(url)
-  const data = await res.json()
+  const url = getGenre(genreTV)
+  const response = await fetch(url)
+  const data = await response.json()
 
   return {
     props: {
