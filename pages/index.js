@@ -28,15 +28,15 @@ export default function Home() {
       <SearchBar searchPath={pathToSearchAll} />
 
       {/* Collection of different groups of movies */}
-      {/* <Collection
+      <Collection
         isHomePage
         isTrending
         Component={CardTrending}
-        endpoint={trendingMovieDay}
-        href='/movie/trending?page=1'
+        endpoint='/api/movie/trending/1'
+        href='/movie/trending/1'
         limit={limitTrending}
         title='Trending'
-      /> */}
+      />
       {/* <Collection
         isHomePage
         endpoint={moviePopular}
@@ -46,7 +46,7 @@ export default function Home() {
       /> */}
       <Collection
         isHomePage
-        endpoint={'/api/movie/now/1'}
+        endpoint='/api/movie/now/1'
         href='/movie/now/1'
         limit={limitNormal}
         title='Now playing'
