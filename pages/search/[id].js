@@ -1,29 +1,19 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import useSWR from 'swr'
 import CollectionSearch from '../../components/CollectionSearch'
 import Loading from '../../components/Loading'
 import PaginationImproved from '../../components/PaginationImproved'
 import SearchBar from '../../components/SearchBar'
-import { searchAll } from '../../lib/tmdb'
-import { fetcher, pathToSearchAll } from '../../utils'
+import { search } from '../../lib/tmdb'
+import { pathToSearchAll } from '../../utils'
 
-export default function SearchedAll() {
-  const router = useRouter()
-  const { id, page } = router.query
-  const [currentPage, setCurrentPage] = useState(Number(page))
-  const url = searchAll(id) + `&page=${page}`
-  const { data, error } = useSWR(url, fetcher)
+export default function Search({ data, id, page }) {
+  const currentPage = Number(page)
   const isFirst = currentPage === 1
-  const isLast = data ? Number(page) === data.total_pages : false
+  const isLast = data ? currentPage === data.total_pages : false
 
   const filteredResults = data
     ? data.results.filter(item => item.media_type !== 'person')
     : []
-
-  // TODO: Error handling
-  if (error) return <div>Error occurred</div>
 
   return (
     <>
@@ -48,8 +38,8 @@ export default function SearchedAll() {
             nextHref={`${pathToSearchAll}${id}?page=${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
-            goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-            goToNextPage={() => setCurrentPage(currentPage + 1)}
+            goToPreviousPage={() => currentPage - 1}
+            goToNextPage={() => currentPage + 1}
             totalPages={data.total_pages}
           />
         </>
@@ -58,4 +48,19 @@ export default function SearchedAll() {
       )}
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  const { id, page } = context.query
+  const url = search(id, page)
+  const response = await fetch(url)
+  const data = await response.json()
+
+  return {
+    props: {
+      data,
+      id,
+      page,
+    },
+  }
 }
