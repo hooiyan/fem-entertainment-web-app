@@ -17,10 +17,10 @@ import { fetcher, pathToSearchMovie } from '../../utils'
 export default function Movie() {
   const router = useRouter()
   const { id } = router.query
-  const url = getMovieDetail(id)
-  const getCasts = getUrl(`movie/${id}/credits`)
-  const { data: movie, error: movieError } = useSWR(url, fetcher)
-  const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
+  console.log(id)
+  // const getCasts = getUrl(`movie/${id}/credits`)
+  const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
+  // const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
   if (movieError) return <div>{movieError}</div>
   if (!movie) return <div>{movieError}</div>
@@ -49,7 +49,7 @@ export default function Movie() {
             />
             <FilmGenres genres={movie.genres || []} />
             <FilmSynopsis synopsis={movie.overview} />
-            <FilmCasts casts={credits ? credits.cast || [] : []} />
+            {/* <FilmCasts casts={credits ? credits.cast || [] : []} /> */}
             <FilmResources website={movie.homepage} imdb={movie.imdb_id} />
           </section>
         </section>

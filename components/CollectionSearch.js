@@ -2,7 +2,7 @@ import { renderResults, sliceArray } from '../utils'
 import CardNormal from './CardNormal'
 
 export default function CollectionSearch({
-  arr,
+  arr = [],
   isGenre,
   limit = 20,
   media_type = 'movie',

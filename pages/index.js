@@ -28,7 +28,7 @@ export default function Home() {
       <SearchBar searchPath={pathToSearchAll} />
 
       {/* Collection of different groups of movies */}
-      <Collection
+      {/* <Collection
         isHomePage
         isTrending
         Component={CardTrending}
@@ -36,38 +36,38 @@ export default function Home() {
         href='/movie/trending?page=1'
         limit={limitTrending}
         title='Trending'
-      />
-      <Collection
+      /> */}
+      {/* <Collection
         isHomePage
         endpoint={moviePopular}
         href='/movie/popular?page=1'
         limit={limitNormal}
         title='Popular'
-      />
+      /> */}
       <Collection
         isHomePage
-        endpoint={movieNowPlaying}
-        href='/movie/now?page=1'
+        endpoint={'/api/movie/now/1'}
+        href='/movie/now/1'
         limit={limitNormal}
         title='Now playing'
       />
-      <Collection
+      {/* <Collection
         isHomePage
         endpoint={movieUpcoming}
         href='/movie/upcoming?page=1'
         limit={limitNormal}
         title='Upcoming'
-      />
-      <Collection
+      /> */}
+      {/* <Collection
         isHomePage
         endpoint={movieTopRated}
         href='/movie/top?page=1'
         limit={limitNormal}
         title='Top rated'
-      />
+      /> */}
 
       {/* Collection of different groups of tv series */}
-      <Collection
+      {/* <Collection
         isHomePage
         isTrending
         Component={CardTrending}
@@ -112,7 +112,7 @@ export default function Home() {
         media_type='tv'
         title='Top rated'
         type='tv series'
-      />
+      /> */}
     </>
   )
 }

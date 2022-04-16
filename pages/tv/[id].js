@@ -18,9 +18,8 @@ import { renderLanguage, renderRating, renderStatus } from '../movie/[id]'
 export default function TV() {
   const router = useRouter()
   const { id } = router.query
-  const url = getTvDetail(id)
   const getCasts = getUrl(`tv/${id}/credits`)
-  const { data: tv, error: tvError } = useSWR(url, fetcher)
+  const { data: tv, error: tvError } = useSWR(`/api/tv/${id}`, fetcher)
   const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
   if (tvError) return <div>{tvError}</div>

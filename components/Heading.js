@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Heading({
   href,
   isHomePage,
-  isTrending,
+  isTrending, // TODO: Do we need this here?
   media_type,
   title,
 }) {
@@ -24,7 +24,7 @@ export default function Heading({
       ) : (
         <h2 className='section-title'>{title}</h2>
       )}
-      <Link href={href} passHref>
+      <Link href={href} as={href} passHref>
         <span className='cursor-pointer text-xs font-medium uppercase tracking-wide text-app-greyish-blue hover:underline'>
           See more
         </span>
