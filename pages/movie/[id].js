@@ -11,15 +11,12 @@ import FilmResources from '../../components/FilmResources'
 import FilmSynopsis from '../../components/FilmSynopsis'
 import Loading from '../../components/Loading'
 import SearchBar from '../../components/SearchBar'
-import { getMovieDetail, getUrl } from '../../lib/tmdb'
 import { fetcher, pathToSearchMovie } from '../../utils'
 
 export default function Movie() {
   const router = useRouter()
   const { id } = router.query
-  // const getCasts = getUrl(`movie/${id}/credits`)
   const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
-  // const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
   if (movieError) return <div>{movieError}</div>
   if (!movie) return <div>{movieError}</div>
@@ -27,7 +24,7 @@ export default function Movie() {
   return (
     <>
       <Head>
-        <title>{movie.title} | Entertainment App</title>
+        <title>{movie.detail.title} | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder='Search for movies'
@@ -35,21 +32,30 @@ export default function Movie() {
       />
       {movie ? (
         <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
-          <FilmImage src={movie.poster_path} title={movie.title} />
+          <FilmImage
+            src={movie.detail.poster_path}
+            title={movie.detail.title}
+          />
           <section className='md:w-3/5'>
-            <FilmHeading tagline={movie.tagline} title={movie.title} />
-            <FilmRating number={renderRating(movie.vote_average)} />
+            <FilmHeading
+              tagline={movie.detail.tagline}
+              title={movie.detail.title}
+            />
+            <FilmRating number={renderRating(movie.detail.vote_average)} />
             <FilmInfo
               media_type='movie'
-              language={renderLanguage(movie.spoken_languages || [])}
-              length={renderLength(movie.runtime)}
-              status={renderStatus(movie.status)}
-              year={renderYear(movie.release_date)}
+              language={renderLanguage(movie.detail.spoken_languages || [])}
+              length={renderLength(movie.detail.runtime)}
+              status={renderStatus(movie.detailstatus)}
+              year={renderYear(movie.detail.release_date)}
             />
-            <FilmGenres genres={movie.genres || []} />
-            <FilmSynopsis synopsis={movie.overview} />
-            {/* <FilmCasts casts={credits ? credits.cast || [] : []} /> */}
-            <FilmResources website={movie.homepage} imdb={movie.imdb_id} />
+            <FilmGenres genres={movie.detail.genres || []} />
+            <FilmSynopsis synopsis={movie.detail.overview} />
+            <FilmCasts casts={movie.credits.cast} />
+            <FilmResources
+              website={movie.detail.homepage}
+              imdb={movie.detail.imdb_id}
+            />
           </section>
         </section>
       ) : (

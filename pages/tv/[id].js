@@ -11,16 +11,13 @@ import FilmResources from '../../components/FilmResources'
 import FilmSynopsis from '../../components/FilmSynopsis'
 import Loading from '../../components/Loading'
 import SearchBar from '../../components/SearchBar'
-import { getTvDetail, getUrl } from '../../lib/tmdb'
 import { fetcher, pathToSearchTV } from '../../utils'
 import { renderLanguage, renderRating, renderStatus } from '../movie/[id]'
 
 export default function TV() {
   const router = useRouter()
   const { id } = router.query
-  // const getCasts = getUrl(`tv/${id}/credits`)
   const { data: tv, error: tvError } = useSWR(`/api/tv/${id}`, fetcher)
-  // const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
   if (tvError) return <div>{tvError}</div>
   if (!tv) return <div>{tvError}</div>
@@ -28,7 +25,7 @@ export default function TV() {
   return (
     <>
       <Head>
-        <title>{tv.name} | Entertainment App</title>
+        <title>{tv.detail.name} | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder='Search for TV series'
@@ -36,21 +33,24 @@ export default function TV() {
       />
       {tv ? (
         <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
-          <FilmImage src={tv.poster_path} title={tv.name} />
+          <FilmImage src={tv.detail.poster_path} title={tv.detail.name} />
           <section className='md:w-3/5'>
-            <FilmHeading tagline={tv.tagline} title={tv.name} />
-            <FilmRating number={renderRating(tv.vote_average)} />
+            <FilmHeading tagline={tv.detail.tagline} title={tv.detail.name} />
+            <FilmRating number={renderRating(tv.detail.vote_average)} />
             <FilmInfo
               media_type='tv'
-              language={renderLanguage(tv.spoken_languages || [])}
-              firstAir={tv.first_air_date}
-              lastAir={tv.last_air_date}
-              status={renderStatus(tv.status)}
+              language={renderLanguage(tv.detail.spoken_languages || [])}
+              firstAir={tv.detail.first_air_date}
+              lastAir={tv.detail.last_air_date}
+              status={renderStatus(tv.detail.status)}
             />
-            <FilmGenres genres={tv.genres || []} />
-            <FilmSynopsis synopsis={tv.overview} />
-            {/* <FilmCasts casts={credits ? credits.cast || [] : []} /> */}
-            <FilmResources website={tv.homepage} imdb={tv.imdb_id} />
+            <FilmGenres genres={tv.detail.genres || []} />
+            <FilmSynopsis synopsis={tv.detail.overview} />
+            <FilmCasts casts={tv.credits.cast} />
+            <FilmResources
+              website={tv.detail.homepage}
+              imdb={tv.detail.imdb_id}
+            />
           </section>
         </section>
       ) : (
