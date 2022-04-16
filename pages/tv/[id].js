@@ -18,9 +18,9 @@ import { renderLanguage, renderRating, renderStatus } from '../movie/[id]'
 export default function TV() {
   const router = useRouter()
   const { id } = router.query
-  const getCasts = getUrl(`tv/${id}/credits`)
+  // const getCasts = getUrl(`tv/${id}/credits`)
   const { data: tv, error: tvError } = useSWR(`/api/tv/${id}`, fetcher)
-  const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
+  // const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)
 
   if (tvError) return <div>{tvError}</div>
   if (!tv) return <div>{tvError}</div>
@@ -49,7 +49,7 @@ export default function TV() {
             />
             <FilmGenres genres={tv.genres || []} />
             <FilmSynopsis synopsis={tv.overview} />
-            <FilmCasts casts={credits ? credits.cast || [] : []} />
+            {/* <FilmCasts casts={credits ? credits.cast || [] : []} /> */}
             <FilmResources website={tv.homepage} imdb={tv.imdb_id} />
           </section>
         </section>

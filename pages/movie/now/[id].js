@@ -10,7 +10,8 @@ import { fetcher, pathToSearchMovie } from '../../../utils'
 
 export default function NowPlayingMovies() {
   const router = useRouter()
-  const currentPage = Number(router.query.id)
+  const { id } = router.query
+  const currentPage = Number(id)
   const { data, error } = useSWR(`/api/movie/now/${currentPage}`, fetcher)
   const isFirst = currentPage === 1
   const isLast = data ? currentPage === data.total_pages : false
@@ -30,7 +31,7 @@ export default function NowPlayingMovies() {
           <CollectionSearch isGenre arr={data.results} />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
-            currentPage={id ? currentPage : Number(id)}
+            currentPage={currentPage}
             prevHref={`/movie/now/${currentPage - 1}`}
             nextHref={`/movie/now/${currentPage + 1}`}
             isFirst={isFirst}

@@ -8,32 +8,32 @@ import PaginationImproved from '../../../components/PaginationImproved'
 import SearchBar from '../../../components/SearchBar'
 import { fetcher, pathToSearchMovie } from '../../../utils'
 
-export default function TrendingMovies() {
+export default function UpcomingMovies() {
   const router = useRouter()
   const { id } = router.query
   const currentPage = Number(id)
-  const { data, error } = useSWR(`/api/movie/trending/${currentPage}`, fetcher)
+  const { data, error } = useSWR(`/api/movie/upcoming/${id}`, fetcher)
   const isFirst = currentPage === 1
   const isLast = data ? currentPage === data.total_pages : false
 
   return (
     <div>
       <Head>
-        <title>Trending Movies | Entertainment App</title>
+        <title>Upcoming Movies | Entertainment App</title>
       </Head>
       <SearchBar
         placeholder='Search for movies'
         searchPath={pathToSearchMovie}
       />
-      <PageTitle title='trending movies' />
+      <PageTitle title='upcoming movies' />
       {data ? (
         <>
           <CollectionSearch isGenre arr={data.results} />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
-            prevHref={`/movie/trending/${currentPage - 1}`}
-            nextHref={`/movie/trending/${currentPage + 1}`}
+            prevHref={`/movie/upcoming/${currentPage - 1}`}
+            nextHref={`/movie/upcoming/${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => currentPage - 1}

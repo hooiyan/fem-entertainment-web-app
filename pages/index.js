@@ -2,22 +2,10 @@ import Head from 'next/head'
 import CardTrending from '../components/CardTrending'
 import Collection from '../components/Collection'
 import SearchBar from '../components/SearchBar'
-import {
-  movieNowPlaying,
-  moviePopular,
-  movieTopRated,
-  movieUpcoming,
-  trendingMovieDay,
-  trendingTvDay,
-  tvAiringToday,
-  tvOnTheAir,
-  tvPopular,
-  tvTopRated,
-} from '../lib/tmdb'
 import { pathToSearchAll } from '../utils'
 
 export default function Home() {
-  const limitNormal = 8
+  const limitNormal = 6
   const limitTrending = 10
 
   return (
@@ -37,13 +25,13 @@ export default function Home() {
         limit={limitTrending}
         title='Trending'
       />
-      {/* <Collection
+      <Collection
         isHomePage
-        endpoint={moviePopular}
-        href='/movie/popular?page=1'
+        endpoint='/api/movie/popular/1'
+        href='/movie/popular/1'
         limit={limitNormal}
         title='Popular'
-      /> */}
+      />
       <Collection
         isHomePage
         endpoint='/api/movie/now/1'
@@ -51,36 +39,37 @@ export default function Home() {
         limit={limitNormal}
         title='Now playing'
       />
-      {/* <Collection
+      <Collection
         isHomePage
-        endpoint={movieUpcoming}
-        href='/movie/upcoming?page=1'
+        endpoint='/api/movie/upcoming/1'
+        href='/movie/upcoming/1'
         limit={limitNormal}
         title='Upcoming'
-      /> */}
-      {/* <Collection
+      />
+      <Collection
         isHomePage
-        endpoint={movieTopRated}
-        href='/movie/top?page=1'
+        endpoint='/api/movie/top/1'
+        href='/movie/top/1'
         limit={limitNormal}
         title='Top rated'
-      /> */}
+      />
 
       {/* Collection of different groups of tv series */}
-      {/* <Collection
+      <Collection
         isHomePage
         isTrending
         Component={CardTrending}
-        endpoint={trendingTvDay}
-        href='/tv/trending?page=1'
+        endpoint='/api/tv/trending/1'
+        href='/tv/trending/1'
         limit={limitTrending}
+        media_type='tv'
         title='Trending'
         type='tv series'
       />
       <Collection
         isHomePage
-        endpoint={tvPopular}
-        href='/tv/popular?page=1'
+        endpoint='/api/tv/popular/1'
+        href='/tv/popular/1'
         limit={limitNormal}
         media_type='tv'
         title='Popular'
@@ -88,8 +77,8 @@ export default function Home() {
       />
       <Collection
         isHomePage
-        endpoint={tvAiringToday}
-        href='/tv/airing?page=1'
+        endpoint='/api/tv/airing/1'
+        href='/tv/airing/1'
         limit={limitNormal}
         media_type='tv'
         title='Airing today'
@@ -97,8 +86,8 @@ export default function Home() {
       />
       <Collection
         isHomePage
-        endpoint={tvOnTheAir}
-        href='/tv/onair?page=1'
+        endpoint='/api/tv/onair/1'
+        href='/tv/onair/1'
         limit={limitNormal}
         media_type='tv'
         title='On air'
@@ -106,13 +95,13 @@ export default function Home() {
       />
       <Collection
         isHomePage
-        endpoint={tvTopRated}
-        href='/tv/top?page=1'
+        endpoint='/api/tv/top/1'
+        href='/tv/top/1'
         limit={limitNormal}
         media_type='tv'
         title='Top rated'
         type='tv series'
-      /> */}
+      />
     </>
   )
 }

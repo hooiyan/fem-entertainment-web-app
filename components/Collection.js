@@ -14,6 +14,7 @@ export default function Collection({
   limit = 8,
   media_type = 'movie',
   title,
+  type = 'movie'
 }) {
   const { data, error } = useSWR(endpoint, fetcher)
 
@@ -33,7 +34,7 @@ export default function Collection({
             href={href}
             isHomePage={isHomePage}
             isTrending={isTrending}
-            media_type={media_type}
+            media_type={type}
           />
           <section
             className={

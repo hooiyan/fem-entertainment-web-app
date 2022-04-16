@@ -17,7 +17,6 @@ import { fetcher, pathToSearchMovie } from '../../utils'
 export default function Movie() {
   const router = useRouter()
   const { id } = router.query
-  console.log(id)
   // const getCasts = getUrl(`movie/${id}/credits`)
   const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
   // const { data: credits, error: creditsError } = useSWR(getCasts, fetcher)

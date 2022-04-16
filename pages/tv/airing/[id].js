@@ -6,34 +6,34 @@ import Loading from '../../../components/Loading'
 import PageTitle from '../../../components/PageTitle'
 import PaginationImproved from '../../../components/PaginationImproved'
 import SearchBar from '../../../components/SearchBar'
-import { fetcher, pathToSearchMovie } from '../../../utils'
+import { fetcher, pathToSearchTV } from '../../../utils'
 
-export default function TrendingMovies() {
+export default function AiringTVSeries() {
   const router = useRouter()
   const { id } = router.query
   const currentPage = Number(id)
-  const { data, error } = useSWR(`/api/movie/trending/${currentPage}`, fetcher)
+  const { data, error } = useSWR(`/api/tv/airing/${currentPage}`, fetcher)
   const isFirst = currentPage === 1
   const isLast = data ? currentPage === data.total_pages : false
 
   return (
     <div>
       <Head>
-        <title>Trending Movies | Entertainment App</title>
+        <title>TV Series Airing Today | Entertainment App</title>
       </Head>
       <SearchBar
-        placeholder='Search for movies'
-        searchPath={pathToSearchMovie}
+        placeholder='Search for TV Series'
+        searchPath={pathToSearchTV}
       />
-      <PageTitle title='trending movies' />
+      <PageTitle title='TV Series Airing Today' />
       {data ? (
         <>
-          <CollectionSearch isGenre arr={data.results} />
+          <CollectionSearch isGenre arr={data.results} media_type='tv' />
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
-            prevHref={`/movie/trending/${currentPage - 1}`}
-            nextHref={`/movie/trending/${currentPage + 1}`}
+            prevHref={`/tv/airing/${currentPage - 1}`}
+            nextHref={`/tv/airing/${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
             goToPreviousPage={() => currentPage - 1}

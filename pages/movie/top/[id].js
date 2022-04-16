@@ -1,21 +1,18 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import useSWR from 'swr'
-import CollectionSearch from '../../components/CollectionSearch'
-import Loading from '../../components/Loading'
-import PageTitle from '../../components/PageTitle'
-import PaginationImproved from '../../components/PaginationImproved'
-import SearchBar from '../../components/SearchBar'
-import { getUrl, movieTopRated } from '../../lib/tmdb'
-import { fetcher, pathToSearchMovie } from '../../utils'
+import CollectionSearch from '../../../components/CollectionSearch'
+import Loading from '../../../components/Loading'
+import PageTitle from '../../../components/PageTitle'
+import PaginationImproved from '../../../components/PaginationImproved'
+import SearchBar from '../../../components/SearchBar'
+import { fetcher, pathToSearchMovie } from '../../../utils'
 
 export default function TopRatedMovies() {
   const router = useRouter()
-  const { page } = router.query
-  const [currentPage, setCurrentPage] = useState(Number(page))
-  const url = getUrl(movieTopRated) + `&page=${currentPage}`
-  const { data, error } = useSWR(url, fetcher)
+  const { id } = router.query
+  const currentPage = Number(id)
+  const { data, error } = useSWR(`/api/movie/top/${id}`, fetcher)
   const isFirst = currentPage === 1
   const isLast = data ? currentPage === data.total_pages : false
 
@@ -35,12 +32,12 @@ export default function TopRatedMovies() {
           <PaginationImproved
             currentPageAdvance={currentPage + 1}
             currentPage={currentPage}
-            prevHref={`/movie/top?page=${currentPage - 1}`}
-            nextHref={`/movie/top?page=${currentPage + 1}`}
+            prevHref={`/movie/top/${currentPage - 1}`}
+            nextHref={`/movie/top/${currentPage + 1}`}
             isFirst={isFirst}
             isLast={isLast}
-            goToPreviousPage={() => setCurrentPage(currentPage - 1)}
-            goToNextPage={() => setCurrentPage(currentPage + 1)}
+            goToPreviousPage={() => currentPage - 1}
+            goToNextPage={() => currentPage + 1}
             totalPages={data.total_pages}
           />
         </>
