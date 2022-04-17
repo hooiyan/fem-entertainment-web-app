@@ -17,7 +17,7 @@ export default function CardNormal({ id, category, rating, src, title, year }) {
     <div
       className='card-hover-animation mb-4 grow basis-1/5 2xs:w-[130px] xs:w-full cursor-pointer'
       onClick={handleClick}>
-      <CardImage src={src} />
+      <CardImage src={src} alt={title} />
       <CardInfo
         id={id}
         category={category}

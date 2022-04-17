@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { shimmer, toBase64 } from '../utils'
 
-export default function CardImage({ isTrending, src, title }) {
+export default function CardImage({ isTrending, src, alt }) {
   return (
     <div className='relative w-full rounded-lg'>
       <div
@@ -13,7 +13,7 @@ export default function CardImage({ isTrending, src, title }) {
         <Image
           className='rounded-lg'
           src={src}
-          alt={title}
+          alt={alt}
           layout='fill'
           objectFit='cover'
           placeholder='blur'

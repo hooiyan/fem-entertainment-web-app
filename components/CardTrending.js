@@ -22,7 +22,7 @@ export default function CardTrending({
 
   return (
     <div className='relative w-full cursor-pointer' onClick={handleClick}>
-      <CardImage isTrending src={src} />
+      <CardImage isTrending src={src} alt={title} />
       <CardInfo
         isTrending
         id={id}
