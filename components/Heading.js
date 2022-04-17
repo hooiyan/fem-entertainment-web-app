@@ -25,9 +25,9 @@ export default function Heading({
         <h2 className='section-title'>{title}</h2>
       )}
       <Link href={href} as={href} passHref>
-        <span className='cursor-pointer text-xs font-medium uppercase tracking-wide text-app-greyish-blue hover:underline'>
+        <a className='cursor-pointer text-xs font-medium uppercase tracking-wide text-app-greyish-blue hover:underline'>
           See more
-        </span>
+        </a>
       </Link>
     </div>
   )
