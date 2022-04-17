@@ -21,7 +21,7 @@ export default function CardTrending({
   }
 
   return (
-    <div className='relative w-full' onClick={handleClick}>
+    <div className='relative w-full cursor-pointer' onClick={handleClick}>
       <CardImage isTrending src={src} />
       <CardInfo
         isTrending
