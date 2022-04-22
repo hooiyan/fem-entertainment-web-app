@@ -12,6 +12,7 @@ export default function FilmImage({ src, title }) {
         height={530}
         placeholder='blur'
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(350, 530))}`}
+        unoptimized
       />
     </section>
   )

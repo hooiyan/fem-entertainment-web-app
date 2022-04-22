@@ -15,6 +15,7 @@ export default function Footer() {
           width={150}
           height={20}
           alt='powered by TMDB'
+          unoptimized
         />
       </a>
     </footer>

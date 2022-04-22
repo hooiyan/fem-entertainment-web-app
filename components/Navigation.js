@@ -36,6 +36,7 @@ export default function Navigation() {
           alt='user avatar'
           height={24}
           width={24}
+          unoptimized
         />
       </div>
     </nav>

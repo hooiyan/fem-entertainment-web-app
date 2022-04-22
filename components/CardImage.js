@@ -20,6 +20,7 @@ export default function CardImage({ isTrending, src, alt }) {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
           )}`}
+          unoptimized
         />
       </div>
       {/* TODO: Add this back only after the bookmark feature is implemented */}
