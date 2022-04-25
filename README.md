@@ -6,8 +6,8 @@
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [Summary](#summary)
-    - [Screenshot](#screenshot)
     - [Links](#links)
+    - [Screenshot](#screenshot)
   - [Details](#details)
     - [Project purpose and goal](#project-purpose-and-goal)
     - [Web stack and explanation](#web-stack-and-explanation)
@@ -28,6 +28,11 @@
 
 An entertainment web app that built with Next.js and TailwindCSS allows users to search for movies and tv shows.
 
+### Links
+
+- Solution URL: [GitHub](https://github.com/hooiyan/fem-entertainment-web-app)
+- Live Site URL: [Netlify](https://hy-entertainment.netlify.app/)
+
 ### Screenshot
 
 ![](./assets/home.png)
@@ -37,11 +42,6 @@ An entertainment web app that built with Next.js and TailwindCSS allows users to
 ![](./assets/tv-genre.png)
 
 ![](./assets/search-result.png)
-
-### Links
-
-- Solution URL: [GitHub](https://github.com/hooiyan/fem-entertainment-web-app)
-- Live Site URL: [Netlify](https://hy-entertainment.netlify.app/)
 
 ## Details
 
