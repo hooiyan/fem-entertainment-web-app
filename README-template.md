@@ -1,118 +1,116 @@
-# Frontend Mentor - Entertainment web app solution
-
-This is a solution to the [Entertainment web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X). Frontend Mentor challenges help you improve your coding skills by building realistic project.
+# Entertainment web app
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+- [Entertainment web app](#entertainment-web-app)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Summary](#summary)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [Details](#details)
+    - [Project purpose and goal](#project-purpose-and-goal)
+    - [Web stack and explanation](#web-stack-and-explanation)
+    - [Problem and thought process](#problem-and-thought-process)
+    - [Lesson learned](#lesson-learned)
+    - [Future improvements](#future-improvements)
+    - [Useful resources](#useful-resources)
+  - [Getting started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
+  - [Contributing](#contributing)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
-### The challenge
+### Summary
 
-Users should be able to:
-
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Navigate between Home, Movies, TV Series, and Bookmarked Shows pages
-- Add/Remove bookmarks from all movies and TV series
-- Search for relevant shows on all pages
-- **Bonus**: Build this project as a full-stack application
-- **Bonus**: If you're building a full-stack app, we provide authentication screen (sign-up/login) designs if you'd like to create an auth flow
+An entertainment web app that built with Next.js and TailwindCSS. It allows users to search for movies and tv shows.
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./assets/home.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![](./assets/movie-genre.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+![](./assets/tv-genre.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./assets/search-result.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/hooiyan/fem-entertainment-web-app)
+- Live Site URL: [Netlify](https://hy-entertainment.netlify.app/)
 
-## My process
+## Details
 
-### Built with
+### Project purpose and goal
+
+The main purpose of this project is to take advantages of the capabilities of Next.js and have a functional web app up and running quickly. Secondly, I want to become familiar with the framework itself and its convenient features.
+
+### Web stack and explanation
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [useSWR](https://swr.vercel.app/)
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+I love using Next.js because it makes building apps a smoother experience for developers. I think writing CSS inline with HTML is convenient within components. Therefore, I chose to pair TailwindCSS - a utility-first CSS framework with Next.js for styling the user interfaces. The file-system based router built into Next.js allows me to create static and dynamic pages easily. Beside using the built-in API solution provided by Next.js, I also use SWR for client-side data fetching. The data population of this app is powered by TMDB API. The stack that I chose has one thing in common, which is that they all have good written documentations that I can look up easily whenever I encounter a specific problem.
 
-### What I learned
+### Problem and thought process
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+### Lesson learned
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+### Future improvements
 
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+## Getting started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+1. Create an API KEY for the [TMDB API](https://www.themoviedb.org/documentation/api)
+2. Create an `.env.local` file in the root directory of the project
+3. Add 2 environment variables to the `.env.local` file:
+```env
+// .env.local
+
+TMDB_ENDPOINT="https://api.themoviedb.org/3"
+TMDB_API_KEY="YOUR_TMDB_API_KEY"
+```
+
+### Installing
+
+Clone the repository and run the development server:
+```bash
+npm install
+npm run dev
+# or
+yarn install
+yarn dev
+```
+
+## Contributing
+
+Please feel free to send pull request if you want to contribute!
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Website - [hooiyan](https://hooiyan.com)
+- Frontend Mentor - [@hooiyan](https://www.frontendmentor.io/profile/yourusername)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- [Fazza Razaq Amiarso](https://www.frontendmentor.io/profile/fazzaamiarso) - Thank you Fazza for helping me with the pagination implementation.
+- [Oluwamuyiwa Samuel Adepoju](https://www.frontendmentor.io/profile/codermuyi) - Thank you Muyi for reminding me the accessibility issues.
