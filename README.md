@@ -26,7 +26,7 @@
 
 ### Summary
 
-An entertainment web app that built with Next.js and TailwindCSS allows users to search for movies and tv shows.
+An entertainment web app built with Next.js and TailwindCSS that allows users to search for movies and tv shows.
 
 ### Links
 
