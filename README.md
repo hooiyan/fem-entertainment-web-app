@@ -43,6 +43,8 @@ An entertainment web app built with Next.js and TailwindCSS that allows users to
 
 ![](./assets/search-result.png)
 
+![](./assets/movie-detail.png)
+
 ## Details
 
 ### Project purpose and goal
