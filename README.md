@@ -119,8 +119,8 @@ Please feel free to send pull request if you want to contribute!
 
 ## Author
 
-- Website - [hooiyan](https://hooiyan.com)
-- Frontend Mentor - [@hooiyan](https://www.frontendmentor.io/profile/yourusername)
+- Website - [hooiyan](https://hooiyan.netlify.app)
+- Frontend Mentor - [@hooiyan](https://www.frontendmentor.io/profile/hooiyan)
 
 ## Acknowledgments
 
